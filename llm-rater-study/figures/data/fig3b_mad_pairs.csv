@@ -1,0 +1,16 @@
+pair,MAD_five_dread
+LLM A vs LLM B,0.629
+LLM A vs LLM C,0.705
+LLM A vs LLM D,0.533
+LLM A vs LLM E,0.581
+LLM B vs LLM C,0.705
+LLM B vs LLM D,0.527
+LLM B vs LLM E,0.721
+LLM C vs LLM D,0.711
+LLM C vs LLM E,0.822
+LLM D vs LLM E,0.46
+LLM A vs published,1.562
+LLM B vs published,1.543
+LLM C vs published,1.257
+LLM D vs published,1.53
+LLM E vs published,1.705

@@ -1,0 +1,23 @@
+[
+{"id":"INF-02","D":8,"R":8,"E":7,"A":6,"D2":8,"S":4,"rationale":"Cheap RF jamming of an unauthenticated C2 link forces fail-safe or crash during BVLOS, with intercepted MAVLink adding full situational compromise."},
+{"id":"SVC-03","D":9,"R":9,"E":8,"A":8,"D2":6,"S":4,"rationale":"A trivially scriptable signature bypass grants unrestricted flight authorisation, collapsing the trust anchor the whole U-plan service rests on."},
+{"id":"INF-07","D":9,"R":3,"E":2,"A":10,"D2":3,"S":5,"rationale":"Vendor-level firmware backdooring is resource-intensive and hard to detect without SBOM or signing, but compromises every deployed airframe at once."},
+{"id":"INF-06","D":6,"R":4,"E":5,"A":4,"D2":5,"S":4,"rationale":"Tailgating into a vertiport sabotages control panels and landing zones, but impact is confined to one facility and physical repetition is difficult."},
+{"id":"GOV-01","D":5,"R":4,"E":3,"A":6,"D2":3,"S":2,"rationale":"Audit-log tampering at the regulator erodes oversight and enforcement across operators without causing direct airborne harm."},
+{"id":"DAT-06","D":7,"R":8,"E":7,"A":7,"D2":7,"S":3,"rationale":"Automated SQL injection against an unpatched USSP database is easy to find and repeat, yielding mass exfiltration and corruption of flight records."},
+{"id":"GOV-03","D":4,"R":3,"E":3,"A":4,"D2":2,"S":1,"rationale":"Leaked strategic plans and risk registers are an intelligence enabler for later attacks rather than an operational or safety event."},
+{"id":"INF-03","D":8,"R":5,"E":4,"A":6,"D2":5,"S":4,"rationale":"Debug-port and unsigned-update abuse gives full flight-controller control, but needs physical or build-chain access per target model."},
+{"id":"SVC-05","D":8,"R":7,"E":6,"A":8,"D2":5,"S":4,"rationale":"Injected geofence boundaries steer every subscribing operator in a volume toward restricted airspace while appearing legitimate."},
+{"id":"SVC-02","D":7,"R":7,"E":6,"A":7,"D2":5,"S":4,"rationale":"Phantom tracks and masked real conflicts degrade separation for all traffic monitored by the service, raising mid-air collision risk."},
+{"id":"DAT-05","D":6,"R":8,"E":7,"A":7,"D2":6,"S":2,"rationale":"A stolen key with no rate limiting enables trivially repeatable bulk exfiltration, but the harm is confidentiality rather than flight safety."},
+{"id":"DAT-02","D":9,"R":5,"E":5,"A":10,"D2":4,"S":5,"rationale":"Poisoning the single source of truth propagates corrupted state simultaneously to every dependent U-space service with no integrity check to stop it."},
+{"id":"SVC-01","D":6,"R":7,"E":6,"A":5,"D2":6,"S":3,"rationale":"Weak identity proofing lets unaccountable operators fly legally-looking missions, undermining attribution more than immediate safety."},
+{"id":"DAT-01","D":8,"R":7,"E":7,"A":8,"D2":6,"S":4,"rationale":"Unsecured write access allows deletion of no-fly records, silently opening restricted airspace to every operator consuming the database."},
+{"id":"DAT-03","D":6,"R":6,"E":5,"A":7,"D2":5,"S":3,"rationale":"Manipulated third-party weather and traffic feeds cause unsafe routing region-wide, though tactical deconfliction partially mitigates the outcome."},
+{"id":"GOV-02","D":5,"R":6,"E":5,"A":8,"D2":6,"S":2,"rationale":"Exploiting legislative ambiguity to skip a cybersecurity management system weakens the whole ecosystem's baseline without being an attack in itself."},
+{"id":"INF-01","D":9,"R":9,"E":8,"A":9,"D2":9,"S":5,"rationale":"Low-cost, well-documented GNSS spoofing and jamming defeat an unauthenticated single-source dependency and affect every airframe in the RF footprint."},
+{"id":"DAT-04","D":5,"R":5,"E":4,"A":5,"D2":3,"S":2,"rationale":"Deleting non-immutable logs conceals incidents and blocks forensics, but requires privileged access and causes no direct operational harm."},
+{"id":"INF-04","D":6,"R":5,"E":4,"A":4,"D2":4,"S":4,"rationale":"Ground-station power loss halts local operations and BMS manipulation can deplete a battery in flight, though reach is limited to targeted assets."},
+{"id":"SVC-04","D":7,"R":8,"E":7,"A":9,"D2":7,"S":3,"rationale":"Commodity DDoS against a single unprotected gateway denies authorisation services to an entire volume, typically forcing contingency landings rather than loss of control."},
+{"id":"INF-05","D":7,"R":6,"E":5,"A":5,"D2":4,"S":4,"rationale":"Signal and IMU injection corrupts flight decisions where no cross-sensor validation exists, but needs proximity and research-grade technique."}
+]

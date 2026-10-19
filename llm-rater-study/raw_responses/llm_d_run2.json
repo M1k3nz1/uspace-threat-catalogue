@@ -1,0 +1,23 @@
+[
+{"id":"DAT-03","D":7,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Falsified weather or traffic feeds drive unsafe routing across many operations, but injection requires access to or impersonation of a third-party provider."},
+{"id":"GOV-03","D":5,"R":3,"E":3,"A":4,"D2":2,"S":1,"rationale":"Leaked strategic and risk documentation enables future targeting and reputational harm but causes no direct flight-safety consequence."},
+{"id":"DAT-02","D":9,"R":5,"E":4,"A":10,"D2":3,"S":5,"rationale":"Poisoning the single source of truth propagates corrupted state to every dependent service at once, though write access to the CIS is hard to obtain."},
+{"id":"INF-05","D":8,"R":6,"E":5,"A":4,"D2":5,"S":5,"rationale":"Sensor and IMU injection directly corrupts the control loop and can cause loss of control, but affects aircraft individually rather than the whole volume."},
+{"id":"SVC-02","D":8,"R":7,"E":6,"A":7,"D2":6,"S":4,"rationale":"Injected telemetry creates phantom tracks and masks genuine conflicts, and unauthenticated telemetry ingest is readily repeatable once the interface is known."},
+{"id":"DAT-04","D":5,"R":4,"E":3,"A":5,"D2":3,"S":2,"rationale":"Log tampering destroys forensic accountability and conceals prior attacks but does not itself endanger flight, and requires privileged SIEM access."},
+{"id":"GOV-02","D":6,"R":7,"E":4,"A":8,"D2":6,"S":3,"rationale":"Exploiting regulatory ambiguity lets non-compliant USSPs operate across the whole ecosystem, with systemic but indirect and slow-acting safety erosion."},
+{"id":"SVC-01","D":6,"R":7,"E":6,"A":5,"D2":6,"S":3,"rationale":"Weak identity proofing lets an attacker obtain legitimate-looking authorisations, giving accountability loss and unvetted flights rather than immediate loss of control."},
+{"id":"SVC-03","D":9,"R":9,"E":8,"A":8,"D2":7,"S":4,"rationale":"A JWT none-algorithm bypass is trivially repeatable, widely documented and yields unrestricted flight authorisation across the service."},
+{"id":"DAT-01","D":9,"R":6,"E":6,"A":8,"D2":5,"S":5,"rationale":"Deleting or altering no-fly geometry opens restricted airspace to every operator relying on that database, with severe third-party and infrastructure risk."},
+{"id":"INF-01","D":9,"R":9,"E":7,"A":9,"D2":9,"S":5,"rationale":"GNSS lacks signal authentication, spoofing and jamming hardware is cheap and the effect is immediate loss of positioning over an entire area."},
+{"id":"INF-06","D":6,"R":3,"E":4,"A":3,"D2":4,"S":4,"rationale":"Physical sabotage of vertiport control equipment is locally severe, including during landing, but requires site presence and does not scale."},
+{"id":"SVC-05","D":8,"R":6,"E":5,"A":8,"D2":5,"S":5,"rationale":"Injected geofence boundaries cause fleet-wide airspace violations and are trusted implicitly by conformance logic, though feed compromise takes effort."},
+{"id":"INF-03","D":9,"R":5,"E":3,"A":5,"D2":4,"S":5,"rationale":"Backdoored firmware gives full control authority over the airframe, but needs physical or build-chain access and reverse-engineering skill."},
+{"id":"GOV-01","D":5,"R":4,"E":3,"A":6,"D2":3,"S":2,"rationale":"Tampering with authority audit records defeats oversight and enforcement across many operators without creating an immediate hazard."},
+{"id":"INF-07","D":9,"R":3,"E":2,"A":9,"D2":2,"S":5,"rationale":"A compromised vendor or substituted component affects every deployed unit, but demands sophisticated, well-resourced and hard-to-detect access."},
+{"id":"INF-04","D":7,"R":5,"E":5,"A":5,"D2":6,"S":4,"rationale":"Loss of ground-station power halts operations and BMS manipulation can cause mid-flight power loss, though effects are bounded to one site or airframe."},
+{"id":"SVC-04","D":7,"R":8,"E":8,"A":9,"D2":8,"S":3,"rationale":"Flooding an unprotected gateway is cheap and repeatable and denies authorisation services volume-wide, but is detectable and degrades availability rather than control."},
+{"id":"DAT-06","D":8,"R":7,"E":6,"A":7,"D2":7,"S":3,"rationale":"SQL injection yields bulk exfiltration and corruption of flight-plan records using well-known tooling, with mainly confidentiality and integrity consequences."},
+{"id":"INF-02","D":9,"R":8,"E":7,"A":7,"D2":8,"S":5,"rationale":"C2 jamming during BVLOS forces fail-safe or crash, and unauthenticated MAVLink traffic is easy to intercept or manipulate with low-cost SDR."},
+{"id":"DAT-05","D":6,"R":7,"E":7,"A":6,"D2":6,"S":2,"rationale":"A leaked API key enables bulk harvesting of sensitive operational data with minimal skill, but confers no control over flights."}
+]

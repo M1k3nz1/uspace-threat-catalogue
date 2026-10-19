@@ -1,0 +1,23 @@
+[
+  {"id":"DAT-03","D":7,"R":7,"E":5,"A":7,"D2":5,"S":4,"rationale":"Compromised weather feeds cause widespread unsafe routing decisions affecting multiple UAS simultaneously."},
+  {"id":"GOV-03","D":5,"R":5,"E":4,"A":8,"D2":4,"S":1,"rationale":"Leaked strategic plans undermine U-Space security posture but pose no immediate flight safety risk."},
+  {"id":"DAT-02","D":9,"R":6,"E":5,"A":10,"D2":5,"S":5,"rationale":"SSOT poisoning cascades to all dependent U-Space services simultaneously, creating a catastrophic single point of failure."},
+  {"id":"INF-05","D":8,"R":6,"E":5,"A":5,"D2":5,"S":5,"rationale":"Sensor spoofing directly causes incorrect flight decisions and IMU manipulation leads to crashes with potentially fatal outcomes."},
+  {"id":"SVC-02","D":9,"R":7,"E":6,"A":8,"D2":7,"S":5,"rationale":"False telemetry blinds the tracking system to real conflicts, creating catastrophic mid-air collision risk."},
+  {"id":"DAT-04","D":6,"R":6,"E":5,"A":6,"D2":4,"S":2,"rationale":"Log tampering conceals attack evidence and undermines forensic investigation but has no direct flight safety impact."},
+  {"id":"GOV-02","D":6,"R":7,"E":7,"A":7,"D2":6,"S":3,"rationale":"Regulatory gaps allow USSPs to operate without adequate cybersecurity controls, creating systemic moderate risk."},
+  {"id":"SVC-01","D":7,"R":7,"E":6,"A":6,"D2":6,"S":3,"rationale":"Spoofed identities enable unauthorized operators to access U-Space, undermining accountability and airspace safety."},
+  {"id":"SVC-03","D":9,"R":8,"E":7,"A":7,"D2":7,"S":4,"rationale":"JWT None Algorithm bypass grants unrestricted flight authorisation, enabling unauthorised operations in any airspace."},
+  {"id":"DAT-01","D":9,"R":7,"E":6,"A":9,"D2":7,"S":5,"rationale":"Removing no-fly zone boundaries via unsecured API directs UAS into restricted airspace with catastrophic collision risk."},
+  {"id":"INF-01","D":9,"R":8,"E":6,"A":8,"D2":8,"S":5,"rationale":"GNSS spoofing and jamming directly compromise navigation for all affected UAS with catastrophic loss-of-positioning potential."},
+  {"id":"INF-06","D":7,"R":5,"E":5,"A":4,"D2":6,"S":4,"rationale":"Physical sabotage of vertiport controls threatens landing and takeoff safety for urban air mobility operations at that site."},
+  {"id":"SVC-05","D":9,"R":7,"E":5,"A":8,"D2":6,"S":5,"rationale":"Fake geofence injection removes airspace restrictions, directing UAS into controlled zones with catastrophic collision potential."},
+  {"id":"INF-03","D":9,"R":6,"E":4,"A":8,"D2":3,"S":5,"rationale":"Supply-chain firmware compromise gives attackers direct control of flight controllers across entire deployed fleets."},
+  {"id":"GOV-01","D":6,"R":6,"E":5,"A":7,"D2":4,"S":2,"rationale":"Tampered authority audit logs allow USSP violations to persist undetected, gradually eroding systemic safety oversight."},
+  {"id":"INF-07","D":9,"R":6,"E":4,"A":9,"D2":3,"S":5,"rationale":"Trusted-vendor supply chain compromise distributes backdoored COTS components across all deployed UAS with fleet-wide catastrophic impact."},
+  {"id":"INF-04","D":7,"R":6,"E":5,"A":5,"D2":5,"S":4,"rationale":"BMS manipulation causing mid-flight battery depletion creates serious crash risk with potential ground casualties."},
+  {"id":"SVC-04","D":8,"R":8,"E":7,"A":9,"D2":8,"S":4,"rationale":"Single API gateway flooding disrupts all U-Space services simultaneously, leaving in-flight UAS without critical support."},
+  {"id":"DAT-06","D":8,"R":7,"E":7,"A":8,"D2":7,"S":3,"rationale":"SQL injection enables mass flight-plan exfiltration and data corruption, compromising USSP operational integrity."},
+  {"id":"INF-02","D":9,"R":7,"E":5,"A":7,"D2":7,"S":5,"rationale":"C2 link jamming during BVLOS operations directly causes loss of control and crashes with catastrophic safety consequences."},
+  {"id":"DAT-05","D":6,"R":7,"E":7,"A":7,"D2":7,"S":2,"rationale":"Stolen API keys enable bulk exfiltration of sensitive flight-plan data but pose no direct flight safety threat."}
+]

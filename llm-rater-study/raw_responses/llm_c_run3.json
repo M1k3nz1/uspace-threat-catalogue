@@ -1,0 +1,23 @@
+[
+  {"id":"SVC-03","D":9,"R":8,"E":7,"A":8,"D2":7,"S":4,"rationale":"JWT None Algorithm is a well-known, toolable bypass that can grant mass unauthorised flight clearances across the entire volume."},
+  {"id":"INF-01","D":10,"R":7,"E":5,"A":9,"D2":8,"S":5,"rationale":"GNSS spoofing/jamming can redirect multiple UAS into restricted or manned airspace with potential for mid-air collision or ground impact."},
+  {"id":"DAT-06","D":8,"R":8,"E":7,"A":8,"D2":7,"S":3,"rationale":"SQL injection is a mature, scriptable attack; mass record corruption degrades operational integrity but safety impact is primarily indirect."},
+  {"id":"DAT-03","D":8,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Poisoned weather or traffic feeds can push multiple UAS into unsafe routes or mutual conflict, but compromising third-party feeds requires upstream access."},
+  {"id":"SVC-01","D":7,"R":7,"E":6,"A":5,"D2":6,"S":3,"rationale":"Identity spoofing lets rogue operators authorise flights, but the blast radius is typically per-operator rather than system-wide."},
+  {"id":"INF-02","D":10,"R":7,"E":5,"A":7,"D2":7,"S":5,"rationale":"C2 link loss during BVLOS directly causes fly-away or crash; MAVLink interception allows full command injection—catastrophic for any airframe in range."},
+  {"id":"DAT-04","D":6,"R":7,"E":5,"A":6,"D2":4,"S":2,"rationale":"Log tampering conceals prior attacks and destroys forensic evidence but does not itself cause immediate operational or physical harm."},
+  {"id":"GOV-01","D":7,"R":5,"E":4,"A":8,"D2":4,"S":3,"rationale":"Regulatory audit-trail compromise enables systemic impunity; safety degrades over time as violations go uncorrected, but direct physical harm is delayed."},
+  {"id":"INF-03","D":9,"R":5,"E":4,"A":6,"D2":3,"S":5,"rationale":"Backdoored flight controllers give full aircraft control to the adversary; physical access or supply-chain compromise is hard but consequences are catastrophic."},
+  {"id":"SVC-02","D":9,"R":7,"E":5,"A":8,"D2":6,"S":5,"rationale":"Phantom tracks mask real conflicts and blind deconfliction services, directly enabling mid-air collisions across an entire service volume."},
+  {"id":"INF-07","D":9,"R":4,"E":3,"A":9,"D2":3,"S":5,"rationale":"A single compromised vendor can backdoor an entire fleet; extremely hard to execute and detect, but impact is catastrophic and fleet-wide."},
+  {"id":"DAT-02","D":10,"R":6,"E":5,"A":10,"D2":5,"S":5,"rationale":"Poisoning the single source of truth cascades corrupted data to every dependent U-Space service simultaneously—maximum blast radius."},
+  {"id":"INF-06","D":7,"R":5,"E":5,"A":4,"D2":6,"S":4,"rationale":"Physical sabotage of a vertiport endangers passengers and ground crew but impact is localised to one facility."},
+  {"id":"INF-05","D":8,"R":6,"E":5,"A":6,"D2":5,"S":5,"rationale":"Spoofed altitude or IMU data feeds directly into flight-control loops, causing crashes as demonstrated by Asghari et al."},
+  {"id":"INF-04","D":8,"R":6,"E":5,"A":6,"D2":5,"S":4,"rationale":"BMS manipulation mid-flight causes forced landing or crash; ground-station power loss halts all operations at that site."},
+  {"id":"DAT-05","D":7,"R":8,"E":7,"A":7,"D2":7,"S":2,"rationale":"API key abuse enables bulk exfiltration of sensitive flight-plan data; high reproducibility but safety consequence is limited to information disclosure."},
+  {"id":"DAT-01","D":10,"R":6,"E":5,"A":8,"D2":6,"S":5,"rationale":"Deleting no-fly zone boundaries via an unsecured API opens restricted airspace to UAS, risking collision with manned aircraft."},
+  {"id":"GOV-03","D":6,"R":5,"E":4,"A":5,"D2":4,"S":2,"rationale":"Strategic plan leakage aids adversary planning but does not directly endanger flight operations or physical safety."},
+  {"id":"SVC-04","D":9,"R":8,"E":7,"A":9,"D2":8,"S":4,"rationale":"DDoS against a single-point API gateway blacks out all flight authorisations across the volume; tools are cheap and widely available."},
+  {"id":"SVC-05","D":9,"R":6,"E":5,"A":8,"D2":5,"S":5,"rationale":"Injected fake geofence boundaries can silently reroute UAS into restricted or manned airspace, directly enabling catastrophic conflict."},
+  {"id":"GOV-02","D":5,"R":7,"E":6,"A":7,"D2":6,"S":3,"rationale":"Regulatory loopholes are persistently exploitable by any operator but erode safety standards gradually rather than causing immediate harm."}
+]

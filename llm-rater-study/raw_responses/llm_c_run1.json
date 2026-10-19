@@ -1,0 +1,23 @@
+[
+  {"id":"INF-02","D":9,"R":7,"E":5,"A":7,"D2":6,"S":5,"rationale":"C2 link jamming during BVLOS directly causes loss of control with potential for ground casualties and uncontrolled crash."},
+  {"id":"SVC-03","D":7,"R":8,"E":7,"A":6,"D2":7,"S":3,"rationale":"JWT None algorithm attack is well-documented and trivially scriptable, granting unauthorized flight access with moderate airspace safety risk."},
+  {"id":"INF-07","D":9,"R":4,"E":3,"A":9,"D2":3,"S":5,"rationale":"Supply-chain compromise is hard to execute and detect but affects entire deployed fleet with potential for catastrophic multi-drone failures."},
+  {"id":"INF-06","D":7,"R":5,"E":4,"A":5,"D2":5,"S":4,"rationale":"Physical compromise of vertiport control systems poses serious risk to UAM passenger safety but is limited to a single facility."},
+  {"id":"GOV-01","D":6,"R":6,"E":5,"A":8,"D2":4,"S":2,"rationale":"Tampered audit logs undermine system-wide regulatory oversight, but safety impact is indirect through degraded enforcement."},
+  {"id":"DAT-06","D":7,"R":8,"E":7,"A":8,"D2":7,"S":3,"rationale":"SQL injection enables mass flight-record exfiltration and corruption; corrupted flight plans create moderate operational safety risk."},
+  {"id":"GOV-03","D":5,"R":6,"E":5,"A":4,"D2":4,"S":1,"rationale":"Strategic document exfiltration harms national security planning and confidentiality but has no direct operational safety consequence."},
+  {"id":"INF-03","D":9,"R":5,"E":5,"A":6,"D2":4,"S":5,"rationale":"Backdoored flight-controller firmware enables full drone control compromise with catastrophic uncontrolled-flight potential."},
+  {"id":"SVC-05","D":9,"R":6,"E":5,"A":8,"D2":5,"S":5,"rationale":"Fake geofence injection could route multiple UAS into restricted airspace, risking catastrophic collision with manned aviation."},
+  {"id":"SVC-02","D":8,"R":7,"E":6,"A":7,"D2":6,"S":4,"rationale":"False telemetry creates phantom traffic and masks real conflicts, causing serious undetected collision risk in monitored airspace."},
+  {"id":"DAT-05","D":6,"R":8,"E":7,"A":7,"D2":7,"S":2,"rationale":"Stolen API keys enable bulk data exfiltration with high reproducibility but impact is primarily confidentiality, not direct safety."},
+  {"id":"DAT-02","D":9,"R":6,"E":5,"A":10,"D2":5,"S":5,"rationale":"Poisoned SSOT data propagates simultaneously to all dependent U-Space services, creating catastrophic system-wide safety failure."},
+  {"id":"SVC-01","D":6,"R":7,"E":7,"A":5,"D2":6,"S":2,"rationale":"Weak identity proofing enables registration fraud and unauthorized flights, with indirect safety impact through loss of accountability."},
+  {"id":"DAT-01","D":9,"R":7,"E":6,"A":9,"D2":6,"S":5,"rationale":"Deleting no-fly zone records via unsecured API opens restricted airspace to UAS, risking catastrophic collision with manned aircraft."},
+  {"id":"DAT-03","D":7,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Manipulated weather and traffic feeds create unsafe routing decisions and inter-UAS conflicts with serious safety consequences."},
+  {"id":"GOV-02","D":5,"R":7,"E":8,"A":6,"D2":8,"S":2,"rationale":"Regulatory loophole exploitation requires no technical skill and is publicly discoverable, but safety impact is indirect through degraded compliance."},
+  {"id":"INF-01","D":9,"R":8,"E":6,"A":8,"D2":7,"S":5,"rationale":"GNSS spoofing and jamming directly causes loss of navigation with catastrophic potential for uncontrolled flight into restricted airspace."},
+  {"id":"DAT-04","D":6,"R":7,"E":5,"A":6,"D2":4,"S":2,"rationale":"Log tampering destroys forensic evidence and conceals prior attacks but has no direct safety consequence beyond enabling attack persistence."},
+  {"id":"INF-04","D":8,"R":5,"E":4,"A":6,"D2":5,"S":5,"rationale":"BMS manipulation causing mid-flight battery depletion leads to catastrophic uncontrolled descent with potential ground casualties."},
+  {"id":"SVC-04","D":8,"R":8,"E":7,"A":9,"D2":8,"S":4,"rationale":"API gateway DDoS disrupts all U-Space services for an entire volume, creating serious safety risk for active flights losing deconfliction."},
+  {"id":"INF-05","D":8,"R":6,"E":5,"A":6,"D2":5,"S":5,"rationale":"IMU and sensor manipulation directly causes incorrect flight-control decisions leading to catastrophic crashes, as demonstrated in published research."}
+]

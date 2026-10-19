@@ -1,0 +1,23 @@
+[
+{"id":"DAT-03","D":7,"R":6,"E":5,"A":7,"D2":6,"S":4,"rationale":"Unauthenticated third-party weather and traffic feeds can be falsified with moderate effort, steering many UAS into unsafe routes or conflicts."},
+{"id":"GOV-03","D":5,"R":4,"E":4,"A":6,"D2":4,"S":1,"rationale":"The leak mainly enables future targeted attacks rather than causing direct harm, and it typically needs insider access."},
+{"id":"DAT-02","D":9,"R":6,"E":4,"A":10,"D2":5,"S":5,"rationale":"Poisoning the single source of truth spreads simultaneously to every dependent service, so it can corrupt the shared traffic picture across the whole airspace."},
+{"id":"INF-05","D":8,"R":6,"E":4,"A":3,"D2":5,"S":4,"rationale":"Sensor or IMU manipulation can crash individual aircraft, but it usually needs proximity and specialised signal-injection skills."},
+{"id":"SVC-02","D":8,"R":7,"E":5,"A":7,"D2":6,"S":4,"rationale":"Phantom tracks injected into tracking, together with masked real conflicts, undermine separation for every aircraft in the monitored volume."},
+{"id":"DAT-04","D":4,"R":5,"E":4,"A":4,"D2":4,"S":1,"rationale":"Log tampering happens after the attack and hampers forensics and accountability, but it causes no direct operational harm."},
+{"id":"GOV-02","D":6,"R":8,"E":7,"A":7,"D2":7,"S":2,"rationale":"Public regulatory ambiguities need little skill to exploit and weaken the security baseline across USSPs, but they have only indirect safety effects."},
+{"id":"SVC-01","D":6,"R":7,"E":7,"A":4,"D2":6,"S":3,"rationale":"Weak identity proofing and stolen credentials are easy to abuse, but each case enables illegitimate flights for a limited set of operators."},
+{"id":"SVC-03","D":8,"R":9,"E":8,"A":6,"D2":7,"S":4,"rationale":"The JWT none-algorithm flaw is well known and trivially repeatable once found, and it grants unrestricted flight authorisation."},
+{"id":"DAT-01","D":9,"R":8,"E":6,"A":8,"D2":6,"S":5,"rationale":"Deleting no-fly zones through an unsecured API silently opens restricted airspace, including around aerodromes, to every UAS that relies on the database."},
+{"id":"INF-01","D":8,"R":8,"E":7,"A":7,"D2":10,"S":5,"rationale":"Cheap SDR tools make spoofing and jamming of unauthenticated GNSS easy, and the effects cover a whole area and every receiver in it."},
+{"id":"INF-06","D":7,"R":3,"E":4,"A":3,"D2":5,"S":4,"rationale":"Physical sabotage of a vertiport is serious for UAM landings but needs on-site presence and affects a single facility."},
+{"id":"SVC-05","D":8,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Injected geofence data misleads many operators into controlled airspace, but it requires compromising the feed path."},
+{"id":"INF-03","D":8,"R":4,"E":3,"A":5,"D2":5,"S":4,"rationale":"Firmware backdoors give full flight-controller control, but they need physical, production or update-channel access and real expertise."},
+{"id":"GOV-01","D":5,"R":4,"E":3,"A":5,"D2":3,"S":2,"rationale":"Tampering with regulator audit records erodes oversight over time, with indirect safety consequences, and needs privileged access."},
+{"id":"INF-07","D":10,"R":3,"E":2,"A":10,"D2":2,"S":5,"rationale":"Vendor-level compromise is hard and stealthy, but it can backdoor the entire deployed fleet at once."},
+{"id":"INF-04","D":7,"R":5,"E":4,"A":4,"D2":4,"S":4,"rationale":"BMS manipulation can force loss of power mid-flight and ground-station outages halt operations, but the scope is mostly local."},
+{"id":"SVC-04","D":6,"R":9,"E":8,"A":9,"D2":8,"S":3,"rationale":"Flooding an unprotected gateway is trivial and blocks services for the whole volume, though new authorisations mostly fail safe."},
+{"id":"DAT-06","D":7,"R":8,"E":7,"A":7,"D2":7,"S":3,"rationale":"SQL injection on an unpatched database is a commodity attack, and corrupting flight plans as well as exfiltrating them raises the operational risk."},
+{"id":"INF-02","D":8,"R":8,"E":7,"A":4,"D2":9,"S":4,"rationale":"Unencrypted legacy C2 links such as MAVLink are easy to jam or intercept, causing fail-safe crashes, but the effect is limited to the targeted flights."},
+{"id":"DAT-05","D":5,"R":8,"E":7,"A":6,"D2":6,"S":2,"rationale":"Stolen API keys allow easy bulk exfiltration of flight plans, which mainly harms confidentiality and could enable later targeting."}
+]

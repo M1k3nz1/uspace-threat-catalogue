@@ -1,0 +1,46 @@
+source,target,mechanism,basis,rule
+GOV-01,DAT-04,Oversight,Footprint names asset,N
+GOV-01,SVC-02,Oversight,Mapped by rule,R4
+GOV-03,DAT-06,Integrity / trust,Mapped by rule,R5
+SVC-01,GOV-01,Oversight,Mapped by rule,R1
+SVC-01,DAT-02,Integrity / trust,Mapped by rule,R3
+SVC-02,DAT-02,Integrity / trust,Mapped by rule,R3
+SVC-02,GOV-01,Oversight,Mapped by rule,R1
+SVC-03,DAT-02,Integrity / trust,Mapped by rule,R3
+SVC-03,GOV-01,Oversight,Mapped by rule,R1
+SVC-04,DAT-05,Availability,Mapped by rule,R5
+SVC-04,GOV-01,Oversight,Mapped by rule,R1
+SVC-04,SVC-03,Availability,Scenario,S
+SVC-05,DAT-01,Integrity / trust,Mapped by rule,R5
+SVC-05,GOV-01,Oversight,Mapped by rule,R1
+SVC-05,SVC-03,Integrity / trust,Footprint names asset,N
+DAT-01,SVC-05,Integrity / trust,Footprint names asset,N
+DAT-01,SVC-03,Integrity / trust,Footprint names asset,N
+DAT-02,SVC-01,Integrity / trust,Mapped by rule,R2
+DAT-02,SVC-02,Integrity / trust,Mapped by rule,R2
+DAT-02,SVC-03,Integrity / trust,Mapped by rule,R2
+DAT-02,SVC-05,Integrity / trust,Mapped by rule,R2
+DAT-02,GOV-01,Oversight,Mapped by rule,R1
+DAT-03,SVC-02,Integrity / trust,Footprint names asset,N
+DAT-03,SVC-05,Integrity / trust,Footprint names asset,N
+DAT-04,GOV-01,Oversight,Mapped by rule,R1
+DAT-04,SVC-02,Oversight,Mapped by rule,R4
+DAT-05,SVC-01,Integrity / trust,Mapped by rule,R2
+DAT-05,SVC-02,Integrity / trust,Mapped by rule,R2
+DAT-05,SVC-03,Integrity / trust,Mapped by rule,R2
+DAT-05,SVC-05,Integrity / trust,Mapped by rule,R2
+DAT-06,SVC-01,Availability,Mapped by rule,R2
+DAT-06,SVC-02,Availability,Mapped by rule,R2
+DAT-06,SVC-03,Availability,Mapped by rule,R2
+DAT-06,SVC-05,Availability,Mapped by rule,R2
+INF-01,SVC-05,Integrity / trust,Footprint names asset,N
+INF-01,SVC-03,Integrity / trust,Footprint names asset,N
+INF-02,SVC-03,Availability,Footprint names asset,N
+INF-02,DAT-02,Integrity / trust,Mapped by rule,R3
+INF-03,SVC-02,Integrity / trust,Footprint names asset,N
+INF-03,DAT-02,Integrity / trust,Mapped by rule,R3
+INF-04,SVC-04,Availability,Mapped by rule,R5
+INF-05,DAT-02,Integrity / trust,Mapped by rule,R3
+INF-05,SVC-02,Integrity / trust,Mapped by rule,R4
+INF-06,SVC-02,Availability,Footprint names asset,N
+INF-06,GOV-01,Oversight,Mapped by rule,R1

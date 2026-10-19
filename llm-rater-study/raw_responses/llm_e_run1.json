@@ -1,0 +1,23 @@
+[
+{"id":"INF-02","D":8,"R":8,"E":7,"A":5,"D2":8,"S":4,"rationale":"Cheap RF jamming of unprotected C2/MAVLink links reliably forces fail-safe or crashes of individual BVLOS flights within jammer range."},
+{"id":"SVC-03","D":8,"R":9,"E":7,"A":7,"D2":6,"S":4,"rationale":"A JWT alg=none flaw, once found, gives repeatable and unrestricted authorisation that can put unvetted flights into managed airspace."},
+{"id":"INF-07","D":10,"R":3,"E":2,"A":10,"D2":2,"S":5,"rationale":"Vendor-level backdoors need a nation-state level of effort and are hard to detect, but they compromise the whole deployed fleet at once."},
+{"id":"INF-06","D":7,"R":4,"E":5,"A":4,"D2":6,"S":4,"rationale":"Physical sabotage requires on-site presence and is localised, but it can endanger UAM landings and passengers at the affected vertiport."},
+{"id":"GOV-01","D":5,"R":4,"E":3,"A":6,"D2":3,"S":2,"rationale":"Tampering with regulator logs needs privileged access and mainly erodes oversight and accountability, with only indirect safety effects."},
+{"id":"DAT-06","D":7,"R":8,"E":7,"A":8,"D2":7,"S":3,"rationale":"SQL injection is a well-known, easily scanned flaw; mass flight-plan corruption hits many operators and moderately degrades the safety picture."},
+{"id":"GOV-03","D":5,"R":3,"E":4,"A":5,"D2":3,"S":1,"rationale":"Leaked strategic documents give adversaries reconnaissance value but have no direct safety consequence."},
+{"id":"INF-03","D":9,"R":5,"E":4,"A":6,"D2":6,"S":5,"rationale":"Malicious flight-controller firmware gives full control of the aircraft; exposed debug ports and unsigned updates are easy to spot but require access."},
+{"id":"SVC-05","D":8,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Injecting fake geofences through an unauthenticated feed can lead many UAS into restricted airspace, though other ATM safeguards may still intervene."},
+{"id":"SVC-02","D":8,"R":6,"E":5,"A":7,"D2":5,"S":5,"rationale":"Phantom tracks and hidden real conflicts defeat separation monitoring, creating a direct risk of mid-air collision."},
+{"id":"DAT-05","D":6,"R":9,"E":8,"A":7,"D2":7,"S":2,"rationale":"A stolen API key with no rate limits makes bulk exfiltration trivial, but the impact is mainly confidentiality rather than safety."},
+{"id":"DAT-02","D":10,"R":5,"E":4,"A":10,"D2":4,"S":5,"rationale":"Poisoning the single source of truth corrupts every dependent U-Space service at once, a systemic and potentially catastrophic failure."},
+{"id":"SVC-01","D":6,"R":7,"E":7,"A":4,"D2":6,"S":3,"rationale":"Weak identity proofing lets illegitimate operators fly, but the effect is limited to individual flights and accountability."},
+{"id":"DAT-01","D":9,"R":6,"E":5,"A":8,"D2":5,"S":5,"rationale":"Deleting no-fly-zone records at the database level persistently opens protected airspace, such as around airports, to every consuming service."},
+{"id":"DAT-03","D":7,"R":5,"E":4,"A":6,"D2":4,"S":4,"rationale":"Falsified weather and traffic feeds from unverified third parties can produce unsafe routing and UAS-to-UAS conflicts across a region."},
+{"id":"GOV-02","D":5,"R":7,"E":6,"A":5,"D2":6,"S":2,"rationale":"Exploiting regulatory ambiguity is low-skill and repeatable, but it only weakens security posture rather than causing direct harm."},
+{"id":"INF-01","D":9,"R":9,"E":7,"A":8,"D2":10,"S":5,"rationale":"Civil GNSS is unauthenticated and public knowledge; cheap jammers and SDR spoofers can misdirect or blind every UAS in an area."},
+{"id":"DAT-04","D":4,"R":5,"E":4,"A":3,"D2":3,"S":1,"rationale":"Log tampering hides incidents and hampers forensics after the fact but causes no direct operational or safety harm."},
+{"id":"INF-04","D":7,"R":5,"E":4,"A":5,"D2":4,"S":4,"rationale":"A ground power outage halts operations, while BMS manipulation can cause forced landings or in-flight power loss."},
+{"id":"SVC-04","D":6,"R":9,"E":8,"A":10,"D2":8,"S":2,"rationale":"DDoS on a single gateway with no mitigation is trivial and blocks the whole volume, but flights mostly fail safe by not being authorised."},
+{"id":"INF-05","D":8,"R":4,"E":3,"A":3,"D2":3,"S":4,"rationale":"Signal injection into sensors or the IMU needs specialised, proximate attacks and affects few aircraft, but it can cause crashes."}
+]

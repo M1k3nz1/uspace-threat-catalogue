@@ -1,0 +1,23 @@
+[
+{"id":"SVC-03","D":8,"R":9,"E":8,"A":6,"D2":6,"S":4,"rationale":"A JWT 'none' bypass is a well-known, scriptable flaw that hands out unrestricted flight authorisations, letting unvetted operators fly but needing a separate mishap to cause harm."},
+{"id":"INF-01","D":9,"R":9,"E":7,"A":9,"D2":9,"S":5,"rationale":"Unauthenticated civil GNSS is easy to jam or spoof with cheap SDRs, the weakness is public, and every aircraft in range can be pushed into restricted airspace or lose position."},
+{"id":"DAT-06","D":7,"R":8,"E":6,"A":8,"D2":6,"S":3,"rationale":"SQL injection is a mature, repeatable technique that can exfiltrate and corrupt flight plans at scale, though the safety effect comes indirectly through corrupted planning data."},
+{"id":"DAT-03","D":7,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Poisoning third-party weather or traffic feeds needs access to the feed or its supply path, but it quietly degrades routing and separation for many operators."},
+{"id":"SVC-01","D":5,"R":7,"E":6,"A":3,"D2":6,"S":2,"rationale":"Fake or stolen operator identities are fairly easy to obtain and undermine accountability, but each one affects only individual operators and flights."},
+{"id":"INF-02","D":8,"R":8,"E":7,"A":5,"D2":8,"S":4,"rationale":"Jamming or intercepting legacy unencrypted C2 links such as MAVLink is cheap and well documented, and losing the link in BVLOS can bring the aircraft down, but the effect is local."},
+{"id":"DAT-04","D":4,"R":6,"E":4,"A":4,"D2":4,"S":2,"rationale":"Log tampering assumes the attacker already has a foothold and mainly hides other attacks, so its direct damage and safety impact are limited."},
+{"id":"GOV-01","D":5,"R":3,"E":2,"A":6,"D2":3,"S":2,"rationale":"Tampering with regulator audit records needs privileged or insider access and is hard to reproduce, but it erodes oversight across the whole USSP ecosystem."},
+{"id":"INF-03","D":9,"R":5,"E":3,"A":6,"D2":5,"S":4,"rationale":"A backdoored flight controller or hijacked update gives full control of the aircraft, but it takes physical or update-channel access and real firmware skill."},
+{"id":"SVC-02","D":8,"R":7,"E":5,"A":7,"D2":5,"S":5,"rationale":"Injecting false telemetry blinds the tracking service, creating phantom aircraft and hiding real conflicts that could lead to mid-air collisions."},
+{"id":"INF-07","D":10,"R":3,"E":2,"A":10,"D2":2,"S":5,"rationale":"A compromised vendor or COTS component is hard to carry out and very hard to detect, but it reaches every deployed UAS at once."},
+{"id":"DAT-02","D":9,"R":5,"E":4,"A":10,"D2":4,"S":5,"rationale":"Poisoning the single source of truth spreads false data to every dependent U-Space service at once, a systemic single point of failure."},
+{"id":"INF-06","D":7,"R":4,"E":5,"A":3,"D2":6,"S":4,"rationale":"Physical sabotage of a vertiport needs someone on site and hits only one facility, but it can directly endanger UAM landings and the people nearby."},
+{"id":"INF-05","D":7,"R":5,"E":4,"A":3,"D2":4,"S":4,"rationale":"IMU and sensor injection attacks need proximity and specialist knowledge and hit single aircraft, but they can cause loss of control and crashes."},
+{"id":"INF-04","D":6,"R":6,"E":5,"A":5,"D2":6,"S":3,"rationale":"A ground-station power outage halts operations and BMS manipulation can force emergency landings, but fail-safes usually limit the outcome to a moderate safety effect."},
+{"id":"DAT-05","D":6,"R":8,"E":7,"A":7,"D2":6,"S":2,"rationale":"A leaked API key with no rate limiting makes bulk flight-plan exfiltration easy and repeatable, but the harm is mostly confidentiality rather than flight safety."},
+{"id":"DAT-01","D":9,"R":7,"E":6,"A":8,"D2":5,"S":5,"rationale":"Deleting no-fly zones through an unsecured API silently opens restricted airspace, such as airports or sensitive sites, to every operator using the database."},
+{"id":"GOV-03","D":5,"R":3,"E":3,"A":4,"D2":2,"S":1,"rationale":"Exfiltrating strategic plans and the threat catalogue is espionage that helps an adversary plan later attacks but has no immediate safety effect."},
+{"id":"SVC-04","D":6,"R":9,"E":8,"A":9,"D2":8,"S":3,"rationale":"DDoS against a single, unprotected API gateway is trivial to repeat and stops authorisations across the whole volume, though it mainly causes disruption rather than direct hazard."},
+{"id":"SVC-05","D":8,"R":6,"E":5,"A":7,"D2":5,"S":4,"rationale":"Injecting fake geofence data into an unauthenticated USSP feed changes airspace boundaries for that provider's users, which can lead to restricted-zone incursions."},
+{"id":"GOV-02","D":4,"R":8,"E":7,"A":6,"D2":7,"S":2,"rationale":"Exploiting regulatory ambiguity takes no technical skill and lets weak USSPs operate, but its safety effect is indirect and builds up slowly."}
+]

@@ -1,0 +1,5 @@
+rater,tau,bands,raised,top7,first,inf02rank,gov,maxband
+run 1,0.60,12,1,0.57,INF-01,3,0.67,Critical
+run 2,0.40,12,1,0.57,INF-01,2,0.67,Critical
+run 3,0.59,12,1,0.71,INF-01,2,1.00,Critical
+median of runs,0.56,12,1,0.71,INF-01,2,0.67,Critical

@@ -1,0 +1,5 @@
+rater,tau,bands,raised,top7,first,inf02rank,gov,maxband
+run 1,0.61,10,0,0.71,INF-01,5,1.00,High
+run 2,0.52,11,0,0.57,INF-01,4,0.67,High
+run 3,0.54,11,0,0.57,INF-01,6,1.00,High
+median of runs,0.54,10,0,0.71,INF-01,3,0.67,High

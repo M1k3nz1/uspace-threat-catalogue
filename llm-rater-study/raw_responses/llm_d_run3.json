@@ -1,0 +1,23 @@
+[
+{"id":"SVC-03","D":8,"R":9,"E":8,"A":7,"D2":7,"S":4,"rationale":"Trivially repeatable token forgery yields unrestricted flight authorisation for rogue operators across the volume."},
+{"id":"INF-01","D":9,"R":7,"E":7,"A":8,"D2":9,"S":5,"rationale":"Unauthenticated civil GNSS is a publicly known single point of failure whose spoofing or jamming directly causes loss of control or restricted-airspace incursion."},
+{"id":"DAT-06","D":8,"R":9,"E":7,"A":8,"D2":7,"S":3,"rationale":"Automated tooling finds and repeats injection easily, giving mass record exfiltration and corruption but only indirect flight-safety effects."},
+{"id":"DAT-03","D":6,"R":5,"E":4,"A":7,"D2":5,"S":4,"rationale":"Requires compromising or impersonating a third-party provider, but falsified meteorological or traffic data drives genuinely unsafe routing decisions region-wide."},
+{"id":"SVC-01","D":6,"R":7,"E":6,"A":5,"D2":6,"S":3,"rationale":"Weak identity proofing is easy to probe and abuse, though impact is mainly accountability loss and unattributable flights rather than immediate hazard."},
+{"id":"INF-02","D":9,"R":7,"E":7,"A":7,"D2":8,"S":5,"rationale":"Cheap RF jamming and unencrypted MAVLink are well documented, and C2 loss during BVLOS leads directly to fail-safe descent or crash."},
+{"id":"DAT-04","D":5,"R":6,"E":4,"A":4,"D2":4,"S":2,"rationale":"Needs prior privileged access and causes no direct airspace hazard, but destroys the forensic record needed to detect and correct other attacks."},
+{"id":"GOV-01","D":5,"R":4,"E":3,"A":6,"D2":3,"S":2,"rationale":"Insider-level access to regulator systems is hard to obtain, yet undetected USSP non-compliance erodes oversight across the whole federation."},
+{"id":"INF-03","D":9,"R":5,"E":4,"A":5,"D2":5,"S":5,"rationale":"Firmware backdooring demands hardware access and skill but hands an adversary full authority over the airframe, with catastrophic consequences."},
+{"id":"SVC-02","D":8,"R":7,"E":6,"A":7,"D2":6,"S":4,"rationale":"Unvalidated telemetry ingest lets injected tracks mask genuine conflicts, degrading the shared traffic picture for every participant in the volume."},
+{"id":"INF-07","D":10,"R":2,"E":2,"A":10,"D2":2,"S":5,"rationale":"A trusted-vendor or component compromise is extremely difficult to mount and to discover, but a single success backdoors the entire deployed fleet."},
+{"id":"DAT-02","D":9,"R":6,"E":5,"A":9,"D2":5,"S":4,"rationale":"Poisoning the single source of truth propagates corrupted state simultaneously to every dependent U-Space service with no independent cross-check."},
+{"id":"INF-06","D":7,"R":4,"E":5,"A":4,"D2":5,"S":4,"rationale":"Physical sabotage needs on-site presence and affects one facility, but a compromised vertiport endangers aircraft and people on the ground during landing."},
+{"id":"INF-05","D":8,"R":6,"E":5,"A":6,"D2":5,"S":4,"rationale":"Absent sensor-fusion validation allows injected altitude or IMU data to drive erroneous flight decisions and loss-of-control events."},
+{"id":"INF-04","D":7,"R":5,"E":4,"A":6,"D2":4,"S":4,"rationale":"Ground-station power loss halts operations and BMS manipulation can deplete a battery in flight, though both need targeted access."},
+{"id":"DAT-05","D":6,"R":8,"E":7,"A":7,"D2":7,"S":2,"rationale":"Leaked keys are easy to find and reuse at scale for bulk flight-plan exfiltration, but the harm is confidentiality and reconnaissance rather than safety."},
+{"id":"DAT-01","D":9,"R":8,"E":6,"A":8,"D2":6,"S":5,"rationale":"Deleting or altering a no-fly boundary silently authorises incursions into protected airspace such as airport approaches."},
+{"id":"GOV-03","D":5,"R":3,"E":3,"A":5,"D2":3,"S":1,"rationale":"Insider exfiltration of strategic plans is hard to execute and has no immediate operational effect, though it informs later targeted attacks."},
+{"id":"SVC-04","D":7,"R":9,"E":8,"A":9,"D2":8,"S":3,"rationale":"Flooding a single unprotected gateway is cheap and endlessly repeatable, denying authorisation services to every user in the volume until mitigated."},
+{"id":"SVC-05","D":8,"R":6,"E":5,"A":8,"D2":5,"S":4,"rationale":"Unauthenticated geofence feeds let injected boundaries steer many compliant aircraft into controlled or restricted airspace."},
+{"id":"GOV-02","D":6,"R":5,"E":4,"A":7,"D2":6,"S":2,"rationale":"Published legislative ambiguity is visible to anyone and exploitable without technical attack, weakening sector-wide security posture over time."}
+]
