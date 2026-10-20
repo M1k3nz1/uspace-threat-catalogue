@@ -5,7 +5,7 @@ LLM A to G are done (see README.md; A to E are Claude models, F is OpenAI GPT-6,
 Do this once per model and per run (3 runs per model). Run n uses `prompts/prompt_order{n}.txt`.
 
 1. Open a **new chat** with the model, with the version you want (for example a model of another provider). Set reasoning effort / extended thinking to **High** if the app lets you choose; otherwise leave the default and write it down.
-   Use a temporary or incognito chat if the app has one, and turn off web search, memory, custom instructions and all tools. Do not attach any other file or project knowledge.
+   Use a temporary or incognito chat if the app has one, and keep web access on and memory off (as in the earlier runs), and turn off custom instructions and other tools; record these settings. Do not attach any other file or project knowledge.
 2. Copy the **whole text** of `prompts/prompt_order1.txt` into the chat and send it.
 3. The model must reply with **only a JSON array** (21 objects). Copy the reply into a new file:
    `raw_responses/llm_h_run1.json`.

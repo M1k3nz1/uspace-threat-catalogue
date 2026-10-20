@@ -13,8 +13,8 @@ the ratings are correct.
 ## Protocol
 - **Task.** Rate each of the 21 catalogue entries with the five DREAD ratings (1-10) and the Safety Impact S (1-5, calibrated to SORA SAIL and EUROCONTROL ARA).
 - **Prompt.** Role statement, the six scales with anchors, the instruction to be discriminating, and the 21 entries (asset, attack types, vectors, vulnerabilities, threat scenario). It contains no published ratings, scores, bands or evidence confidence.
-- **Runs.** K = 3 runs per model, each in a fresh session with no web access and no access to the published ratings. The entry order differs per run (`prompts/prompt_order1..3.txt`, orders in `prompts/entry_orders.json`). Run n of every model uses `prompt_order{n}.txt`.
-- **Settings.** High reasoning effort for the five Claude models. For GPT-6 (LLM F) the reasoning level could not be selected in the chat interface and was left at its default. LLM G (Gemini 3.5 Flash-Lite) was used with its default settings in a new chat for each run, with web access ON and memory off; this differs from the other models (no web access), and its reasoning setting was not recorded. Sampling parameters are the defaults of each model and were not changed.
+- **Runs.** K = 3 runs per model, each in a fresh session with web access on, memory off and no access to the published ratings (whether a model actually searched the web was not logged). The entry order differs per run (`prompts/prompt_order1..3.txt`, orders in `prompts/entry_orders.json`). Run n of every model uses `prompt_order{n}.txt`.
+- **Settings.** High reasoning effort for the five Claude models. For GPT-6 (LLM F) the reasoning level could not be selected in the chat interface and was left at its default. LLM G (Gemini 3.5 Flash-Lite) was used with its default settings in a new chat for each run, and its reasoning setting was not recorded. Web access was on and memory off for all seven models. Sampling parameters are the defaults of each model and were not changed.
 - **Output.** One JSON array with one object per entry (`id`, `D`, `R`, `E`, `A`, `D2`, `S`, `rationale`).
 
 Prompt checksums (SHA-256):
@@ -33,8 +33,8 @@ Prompt checksums (SHA-256):
 | LLM C | Claude Opus 4.6 | High | 3 | new chat sessions, October 2026 | yes |
 | LLM D | Claude Opus 5 | High | 3 | new chat sessions, October 2026 | yes |
 | LLM E | Claude Opus 5.5 | High | 3 | new chat sessions, October 2026 | yes |
-| LLM F | OpenAI GPT-6 (reasoning model) | not selectable (default) | 3 | new temporary chat per run, web search, memory, custom instructions, attachments, connectors and tools off; no API session; October 2026 | yes |
-| LLM G | Google Gemini 3.5 Flash-Lite (small model) | default | 3 | new chat per run, web access on, memory off, October 2026 | yes |
+| LLM F | OpenAI GPT-6 (reasoning model) | not selectable (default) | 3 | new temporary chat per run, web search on; memory, custom instructions, attachments and connectors off; no API session; October 2026 | yes |
+| LLM G | Google Gemini 3.5 Flash-Lite (small model) | default | 3 | new chat per run, web access on, memory off, default settings, October 2026 | yes |
 
 Seven models, 21 runs and 441 ratings in total (five Claude models, 15 runs; one OpenAI model and one Google model, 3 runs each). Model versions are recorded as selected by the person running the session. A subagent cannot verify its own model identity.
 Run n of every model used `prompts/prompt_order{n}.txt`, so all models saw the same three entry orders.
@@ -54,6 +54,7 @@ results/                     computed tables (summary.md and CSV files)
 results/paper_tables.md      the numbers of the three LLM tables of Section 8.5
 figures/                     three figures (PDF for LaTeX, PNG 300 dpi) and figures/data/*.csv (the numbers behind each panel)
 scripts/make_figures.py      regenerates the figures (numpy, scipy, matplotlib)
+scripts/compare_models.py    side-by-side comparison of the models (results/model_comparison.csv/.md)
 ```
 
 ## Main findings
@@ -68,6 +69,7 @@ See `results/summary.md` and `results/paper_tables.md` for the numbers.
 ```
 cd scripts
 python3 analyze.py        # writes ../results/summary.md and ../results/*.csv
+python3 compare_models.py # writes ../results/model_comparison.csv and .md
 ```
 
 ## Measures
@@ -79,7 +81,7 @@ python3 analyze.py        # writes ../results/summary.md and ../results/*.csv
 
 ## Known limits
 - The responses of LLM A and LLM B are stored as ratings only; their one-sentence rationales were not retained. The responses of LLM C to G include the rationales.
-- Five of the seven models come from one provider (Anthropic); OpenAI and Google are each represented by one model, and the Google model is a small one. A provider effect therefore cannot be separated from model size and release date. The study measures consistency, not validity. The reasoning level of GPT-6 could not be selected, and LLM G had web access, which the other models did not.
+- Five of the seven models come from one provider (Anthropic); OpenAI and Google are each represented by one model, and the Google model is a small one. A provider effect therefore cannot be separated from model size and release date. The study measures consistency, not validity. The reasoning level of GPT-6 could not be selected Web access was on for all models, so retrieved information may have influenced the ratings; its use was not logged.
 - LLM A and B were run as agent sessions and LLM C to G as chat sessions; the prompt text is identical.
 - Results depend on the prompt wording and on model versions that change over time.
 
