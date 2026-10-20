@@ -41,3 +41,10 @@ LLM F (OpenAI GPT-6),A,0.83,0.84,1.06,0.71
 LLM F (OpenAI GPT-6),D2,0.73,0.74,1.00,0.75
 LLM F (OpenAI GPT-6),S,0.94,0.94,0.90,0.81
 LLM F (OpenAI GPT-6),DREAD-S,0.93,0.93,0.33,0.70
+LLM G (Google Gemini 3.5 Flash-Lite),D,0.84,0.85,0.90,0.73
+LLM G (Google Gemini 3.5 Flash-Lite),R,0.75,0.76,1.05,0.75
+LLM G (Google Gemini 3.5 Flash-Lite),E,0.59,0.60,1.46,0.54
+LLM G (Google Gemini 3.5 Flash-Lite),A,0.66,0.67,2.02,0.51
+LLM G (Google Gemini 3.5 Flash-Lite),D2,0.66,0.68,1.54,0.51
+LLM G (Google Gemini 3.5 Flash-Lite),S,0.88,0.89,0.73,0.92
+LLM G (Google Gemini 3.5 Flash-Lite),DREAD-S,0.85,0.85,0.44,0.59

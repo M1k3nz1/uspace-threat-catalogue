@@ -1,0 +1,212 @@
+[
+{
+"id": "INF-02",
+"D": 7,
+"R": 7,
+"E": 6,
+"A": 3,
+"D2": 8,
+"S": 4,
+"rationale": "C2 jamming causes drone crashes and data interception during BVLOS operations."
+},
+{
+"id": "SVC-03",
+"D": 8,
+"R": 8,
+"E": 8,
+"A": 8,
+"D2": 7,
+"S": 4,
+"rationale": "JWT vulnerability allows unauthorized operators to obtain flight authorizations."
+},
+{
+"id": "INF-07",
+"D": 10,
+"R": 3,
+"E": 3,
+"A": 10,
+"D2": 3,
+"S": 5,
+"rationale": "Supply chain compromise introduces backdoors affecting entire deployed fleets."
+},
+{
+"id": "INF-06",
+"D": 9,
+"R": 4,
+"E": 4,
+"A": 2,
+"D2": 5,
+"S": 5,
+"rationale": "Physical sabotage of vertiport controls threatens passenger UAM safety."
+},
+{
+"id": "GOV-01",
+"D": 6,
+"R": 5,
+"E": 4,
+"A": 6,
+"D2": 4,
+"S": 2,
+"rationale": "Audit log tampering undermines regulatory oversight and accountability."
+},
+{
+"id": "DAT-06",
+"D": 8,
+"R": 8,
+"E": 8,
+"A": 7,
+"D2": 8,
+"S": 3,
+"rationale": "SQL injection exposes and corrupts critical flight plan databases."
+},
+{
+"id": "GOV-03",
+"D": 5,
+"R": 6,
+"E": 5,
+"A": 5,
+"D2": 4,
+"S": 1,
+"rationale": "Strategic plan leakage results in information disclosure without immediate physical safety impact."
+},
+{
+"id": "INF-03",
+"D": 9,
+"R": 5,
+"E": 5,
+"A": 4,
+"D2": 6,
+"S": 5,
+"rationale": "Unsigned firmware updates allow malicious code injection and hardware compromise."
+},
+{
+"id": "SVC-05",
+"D": 8,
+"R": 7,
+"E": 6,
+"A": 8,
+"D2": 6,
+"S": 4,
+"rationale": "Fake geofence injection misleads drones into restricted or hazardous airspace."
+},
+{
+"id": "SVC-02",
+"D": 7,
+"R": 7,
+"E": 6,
+"A": 7,
+"D2": 7,
+"S": 4,
+"rationale": "False telemetry injection compromises situational awareness and hides conflicts."
+},
+{
+"id": "DAT-05",
+"D": 6,
+"R": 8,
+"E": 8,
+"A": 7,
+"D2": 7,
+"S": 1,
+"rationale": "API key theft enables mass exfiltration of sensitive flight plan data."
+},
+{
+"id": "DAT-02",
+"D": 9,
+"R": 6,
+"E": 5,
+"A": 10,
+"D2": 6,
+"S": 5,
+"rationale": "Poisoned SSOT data cascades incorrect state across all dependent U-Space services."
+},
+{
+"id": "SVC-01",
+"D": 7,
+"R": 7,
+"E": 6,
+"A": 4,
+"D2": 6,
+"S": 3,
+"rationale": "Weak identity proofing allows rogue operators to register and fly illicitly."
+},
+{
+"id": "DAT-01",
+"D": 9,
+"R": 8,
+"E": 8,
+"A": 8,
+"D2": 8,
+"S": 5,
+"rationale": "Unsecured APIs allow deletion of no-fly zones, leading to severe airspace breaches."
+},
+{
+"id": "DAT-03",
+"D": 7,
+"R": 7,
+"E": 6,
+"A": 7,
+"D2": 7,
+"S": 4,
+"rationale": "Manipulated weather and traffic feeds cause dangerous flight routing errors."
+},
+{
+"id": "GOV-02",
+"D": 6,
+"R": 5,
+"E": 4,
+"A": 6,
+"D2": 5,
+"S": 2,
+"rationale": "Regulatory loopholes enable operation without mandated cybersecurity controls."
+},
+{
+"id": "INF-01",
+"D": 9,
+"R": 8,
+"E": 8,
+"A": 4,
+"D2": 9,
+"S": 5,
+"rationale": "Unencrypted civilian GNSS is highly vulnerable to spoofing and jamming, causing severe navigation loss."
+},
+{
+"id": "DAT-04",
+"D": 6,
+"R": 6,
+"E": 5,
+"A": 5,
+"D2": 5,
+"S": 1,
+"rationale": "Log tampering conceals incidents and prevents post-attack forensics."
+},
+{
+"id": "INF-04",
+"D": 8,
+"R": 6,
+"E": 5,
+"A": 3,
+"D2": 6,
+"S": 4,
+"rationale": "Power failures and BMS manipulation cause sudden operational shutdowns and crashes."
+},
+{
+"id": "SVC-04",
+"D": 8,
+"R": 8,
+"E": 7,
+"A": 10,
+"D2": 7,
+"S": 3,
+"rationale": "API flooding disrupts all U-Space services and prevents flight authorizations."
+},
+{
+"id": "INF-05",
+"D": 9,
+"R": 7,
+"E": 6,
+"A": 2,
+"D2": 7,
+"S": 5,
+"rationale": "Unvalidated sensor inputs and IMU manipulation lead directly to physical crashes."
+}
+]

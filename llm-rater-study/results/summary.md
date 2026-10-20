@@ -1,5 +1,5 @@
 # LLM-rater study: computed results
-Models: LLM A (Claude Sonnet 5.5), LLM B (Claude Haiku 5.5), LLM C (Claude Opus 4.6), LLM D (Claude Opus 5), LLM E (Claude Opus 5.5), LLM F (OpenAI GPT-6)
+Models: LLM A (Claude Sonnet 5.5), LLM B (Claude Haiku 5.5), LLM C (Claude Opus 4.6), LLM D (Claude Opus 5), LLM E (Claude Opus 5.5), LLM F (OpenAI GPT-6), LLM G (Google Gemini 3.5 Flash-Lite)
 Published mean DREAD-S: 3.71
 
 ## LLM A (Claude Sonnet 5.5) (K=3 runs)
@@ -122,20 +122,40 @@ Run-to-run MAD (5 DREAD ratings): 0.39; MAD vs published: five ratings 1.17, S 0
 | run 3 | 0.47 | 5 | 3 | 0.57 | SVC-04 | 5 | 0.67 | Critical |
 | median of runs | 0.49 | 8 | 6 | 0.57 | SVC-04 | 5 | 0.67 | Critical |
 
-## All 18 runs pooled
-| Dim | alpha | ICC(2,1) | MAD vs published | within +-1 |
+## LLM G (Google Gemini 3.5 Flash-Lite) (K=3 runs)
+| Dim | alpha | ICC(2,1) | MAD vs published | within +-1 (DREAD-S: same band) |
 |---|---|---|---|---|
-| D | 0.74 | 0.75 | 1.15 | 0.67 |
-| R | 0.64 | 0.66 | 1.24 | 0.63 |
-| E | 0.70 | 0.71 | 1.65 | 0.52 |
-| A | 0.72 | 0.73 | 1.46 | 0.61 |
-| D2 | 0.69 | 0.70 | 1.85 | 0.45 |
-| S | 0.83 | 0.84 | 0.71 | 0.92 |
-| DREAD-S | 0.74 | 0.75 | 0.44 | 0.53 |
+| D | 0.84 | 0.85 | 0.90 | 0.73 |
+| R | 0.75 | 0.76 | 1.05 | 0.75 |
+| E | 0.59 | 0.60 | 1.46 | 0.54 |
+| A | 0.66 | 0.67 | 2.02 | 0.51 |
+| D2 | 0.66 | 0.68 | 1.54 | 0.51 |
+| S | 0.88 | 0.89 | 0.73 | 0.92 |
+| DREAD-S | 0.85 | 0.85 | 0.44 | 0.59 |
+
+Run-to-run MAD (5 DREAD ratings): 0.89; MAD vs published: five ratings 1.39, S 0.73; signed mean (LLM - published) D,R,E,A,D2,S = [-0.59, -0.13, -1.33, -1.48, -1.06, -0.06]; mean DREAD-S 3.36
 
 | Rater | tau | bands changed | bands raised | top-7 overlap | first | INF-02 rank | gov in 5 lowest | highest band |
 |---|---|---|---|---|---|---|---|---|
-| median of all runs | 0.52 | 11 | 1 | 0.71 | INF-01 | 4 | 1.00 | Critical |
+| run 1 | 0.44 | 7 | 1 | 0.57 | DAT-01 | 13 | 1.00 | Critical |
+| run 2 | 0.62 | 11 | 1 | 0.71 | INF-01 | 2 | 1.00 | Critical |
+| run 3 | 0.43 | 8 | 0 | 0.43 | INF-01 | 7 | 1.00 | High |
+| median of runs | 0.53 | 8 | 1 | 0.57 | INF-01 | 6 | 1.00 | Critical |
+
+## All 21 runs pooled
+| Dim | alpha | ICC(2,1) | MAD vs published | within +-1 |
+|---|---|---|---|---|
+| D | 0.75 | 0.76 | 1.12 | 0.68 |
+| R | 0.63 | 0.65 | 1.21 | 0.64 |
+| E | 0.66 | 0.67 | 1.62 | 0.52 |
+| A | 0.70 | 0.71 | 1.54 | 0.59 |
+| D2 | 0.66 | 0.67 | 1.80 | 0.46 |
+| S | 0.84 | 0.85 | 0.71 | 0.92 |
+| DREAD-S | 0.75 | 0.76 | 0.44 | 0.54 |
+
+| Rater | tau | bands changed | bands raised | top-7 overlap | first | INF-02 rank | gov in 5 lowest | highest band |
+|---|---|---|---|---|---|---|---|---|
+| median of all runs | 0.52 | 11 | 1 | 0.71 | INF-01 | 6 | 1.00 | Critical |
 
 ## Claude runs only (15 runs pooled)
 | Dim | alpha | ICC(2,1) | MAD vs published | within +-1 |
@@ -209,6 +229,17 @@ LLM A (Claude Sonnet 5.5) vs LLM F (OpenAI GPT-6)
 | S | 0.90 | 0.87 |
 | DREAD-S tau | 0.69 | 0.61 |
 
+LLM A (Claude Sonnet 5.5) vs LLM G (Google Gemini 3.5 Flash-Lite)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.90 | 0.67 |
+| R | 0.77 | 0.68 |
+| E | 0.70 | 0.92 |
+| A | 0.94 | 0.63 |
+| D2 | 0.67 | 0.92 |
+| S | 0.95 | 0.35 |
+| DREAD-S tau | 0.76 | 0.21 |
+
 LLM B (Claude Haiku 5.5) vs LLM C (Claude Opus 4.6)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -253,6 +284,17 @@ LLM B (Claude Haiku 5.5) vs LLM F (OpenAI GPT-6)
 | S | 0.94 | 0.92 |
 | DREAD-S tau | 0.65 | 0.61 |
 
+LLM B (Claude Haiku 5.5) vs LLM G (Google Gemini 3.5 Flash-Lite)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.90 | 0.59 |
+| R | 0.90 | 0.52 |
+| E | 0.89 | 0.51 |
+| A | 0.89 | 0.84 |
+| D2 | 0.76 | 1.14 |
+| S | 0.96 | 0.33 |
+| DREAD-S tau | 0.78 | 0.17 |
+
 LLM C (Claude Opus 4.6) vs LLM D (Claude Opus 5)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -286,6 +328,17 @@ LLM C (Claude Opus 4.6) vs LLM F (OpenAI GPT-6)
 | S | 0.95 | 0.29 |
 | DREAD-S tau | 0.76 | 0.37 |
 
+LLM C (Claude Opus 4.6) vs LLM G (Google Gemini 3.5 Flash-Lite)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.91 | 0.49 |
+| R | 0.76 | 0.76 |
+| E | 0.43 | 0.87 |
+| A | 0.91 | 1.19 |
+| D2 | 0.70 | 0.79 |
+| S | 0.97 | 0.40 |
+| DREAD-S tau | 0.85 | 0.19 |
+
 LLM D (Claude Opus 5) vs LLM E (Claude Opus 5.5)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -308,6 +361,17 @@ LLM D (Claude Opus 5) vs LLM F (OpenAI GPT-6)
 | S | 0.95 | 0.51 |
 | DREAD-S tau | 0.60 | 0.58 |
 
+LLM D (Claude Opus 5) vs LLM G (Google Gemini 3.5 Flash-Lite)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.93 | 0.44 |
+| R | 0.86 | 0.75 |
+| E | 0.83 | 0.84 |
+| A | 0.95 | 0.73 |
+| D2 | 0.82 | 0.94 |
+| S | 0.98 | 0.17 |
+| DREAD-S tau | 0.75 | 0.21 |
+
 LLM E (Claude Opus 5.5) vs LLM F (OpenAI GPT-6)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -319,7 +383,29 @@ LLM E (Claude Opus 5.5) vs LLM F (OpenAI GPT-6)
 | S | 0.93 | 0.60 |
 | DREAD-S tau | 0.66 | 0.62 |
 
+LLM E (Claude Opus 5.5) vs LLM G (Google Gemini 3.5 Flash-Lite)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.92 | 0.65 |
+| R | 0.76 | 0.94 |
+| E | 0.59 | 1.19 |
+| A | 0.94 | 0.63 |
+| D2 | 0.73 | 1.06 |
+| S | 0.96 | 0.27 |
+| DREAD-S tau | 0.70 | 0.20 |
+
+LLM F (OpenAI GPT-6) vs LLM G (Google Gemini 3.5 Flash-Lite)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.93 | 0.94 |
+| R | 0.49 | 1.65 |
+| E | 0.46 | 0.84 |
+| A | 0.89 | 1.75 |
+| D2 | 0.62 | 1.21 |
+| S | 0.95 | 0.59 |
+| DREAD-S tau | 0.74 | 0.53 |
+
 ## Between-model agreement by provider group (MAD of the five DREAD ratings, run means; Kendall tau of DREAD-S)
 
 Claude vs Claude: 10 pairs; MAD 0.46-0.82 (mean 0.64); tau 0.78-0.85 (mean 0.81)
-Claude vs other provider: 5 pairs; MAD 0.97-1.54 (mean 1.35); tau 0.60-0.76 (mean 0.67)
+Claude vs other provider: 10 pairs; MAD 0.72-1.54 (mean 1.07); tau 0.60-0.85 (mean 0.72)

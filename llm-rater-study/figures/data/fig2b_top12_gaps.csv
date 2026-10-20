@@ -1,13 +1,13 @@
-entry,rating,published,LLM A,LLM B,LLM C,LLM D,LLM E,LLM F
-INF-07,Exploitability,7.0,2.0,3.33,3.33,2.0,2.0,4.67
-INF-06,Affected assets,8.0,3.67,3.67,4.33,3.67,3.33,5.33
-INF-07,Discoverability,7.0,3.0,2.33,3.0,2.33,2.0,5.33
-GOV-03,Discoverability,7.0,4.0,2.67,4.0,2.33,3.0,5.0
-GOV-01,Discoverability,7.0,3.33,3.0,4.0,3.0,3.0,5.33
-SVC-02,Exploitability,9.0,5.0,6.33,5.67,6.0,5.0,6.33
-DAT-02,Exploitability,8.0,4.0,5.0,5.0,4.67,4.0,6.0
-DAT-02,Discoverability,8.0,4.33,4.0,5.0,4.0,4.33,7.0
-DAT-04,Discoverability,7.0,4.33,3.0,4.0,3.33,3.67,6.0
-SVC-01,Affected assets,8.0,5.0,5.33,5.33,5.0,3.67,6.33
-INF-03,Exploitability,7.0,4.0,4.33,4.33,3.67,3.33,5.0
-DAT-04,Damage,8.0,5.33,5.67,6.0,5.0,4.0,6.33
+entry,rating,published,LLM A,LLM B,LLM C,LLM D,LLM E,LLM F,LLM G
+INF-06,Affected assets,8.0,3.67,3.67,4.33,3.67,3.33,5.33,2.67
+INF-07,Exploitability,7.0,2.0,3.33,3.33,2.0,2.0,4.67,4.33
+INF-07,Discoverability,7.0,3.0,2.33,3.0,2.33,2.0,5.33,4.33
+GOV-03,Discoverability,7.0,4.0,2.67,4.0,2.33,3.0,5.0,3.67
+GOV-01,Discoverability,7.0,3.33,3.0,4.0,3.0,3.0,5.33,3.67
+SVC-02,Exploitability,9.0,5.0,6.33,5.67,6.0,5.0,6.33,6.33
+DAT-02,Exploitability,8.0,4.0,5.0,5.0,4.67,4.0,6.0,5.67
+DAT-02,Discoverability,8.0,4.33,4.0,5.0,4.0,4.33,7.0,6.0
+SVC-01,Affected assets,8.0,5.0,5.33,5.33,5.0,3.67,6.33,4.33
+DAT-04,Discoverability,7.0,4.33,3.0,4.0,3.33,3.67,6.0,4.67
+DAT-04,Affected assets,8.0,5.67,5.33,6.0,4.67,3.67,7.0,4.33
+INF-02,Affected assets,9.0,5.67,6.33,7.0,6.67,4.67,8.0,5.33

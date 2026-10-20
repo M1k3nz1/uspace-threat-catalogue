@@ -1,0 +1,212 @@
+[
+{
+"id": "DAT-03",
+"D": 6,
+"R": 6,
+"E": 5,
+"A": 7,
+"D2": 5,
+"S": 3,
+"rationale": "Fake weather or traffic data can disrupt routing and cause mid-air conflict risks."
+},
+{
+"id": "GOV-03",
+"D": 5,
+"R": 3,
+"E": 3,
+"A": 3,
+"D2": 3,
+"S": 1,
+"rationale": "Leaking strategic plans compromises operational confidentiality rather than immediate flight safety."
+},
+{
+"id": "DAT-02",
+"D": 9,
+"R": 7,
+"E": 6,
+"A": 10,
+"D2": 6,
+"S": 4,
+"rationale": "Compromising the SSOT poisons dependent U-Space services simultaneously across the board."
+},
+{
+"id": "INF-05",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 2,
+"D2": 7,
+"S": 4,
+"rationale": "Manipulating local sensors or IMUs can cause immediate physical crashes of individual UAS."
+},
+{
+"id": "SVC-02",
+"D": 8,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 6,
+"S": 4,
+"rationale": "False telemetry injection into tracking systems creates phantom traffic and masks conflicts."
+},
+{
+"id": "DAT-04",
+"D": 4,
+"R": 6,
+"E": 5,
+"A": 4,
+"D2": 4,
+"S": 1,
+"rationale": "Tampering with audit trails hinders post-incident accountability without immediate safety impact."
+},
+{
+"id": "GOV-02",
+"D": 5,
+"R": 2,
+"E": 2,
+"A": 5,
+"D2": 3,
+"S": 2,
+"rationale": "Exploiting regulatory loopholes undermines compliance oversight and legal frameworks over time."
+},
+{
+"id": "SVC-01",
+"D": 6,
+"R": 5,
+"E": 5,
+"A": 4,
+"D2": 5,
+"S": 2,
+"rationale": "False identities allow illegal flight authorization but lack direct operational safety feedback loops."
+},
+{
+"id": "SVC-03",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 7,
+"S": 4,
+"rationale": "Bypassing signature verification grants unauthorized flights, creating severe collision risks."
+},
+{
+"id": "DAT-01",
+"D": 9,
+"R": 7,
+"E": 6,
+"A": 7,
+"D2": 6,
+"S": 4,
+"rationale": "Removing no-fly zones allows drones to inadvertently enter dangerous or restricted airspace."
+},
+{
+"id": "INF-01",
+"D": 9,
+"R": 9,
+"E": 8,
+"A": 9,
+"D2": 8,
+"S": 4,
+"rationale": "GNSS spoofing and jamming disrupt positioning globally, risking widespread deviation and crashes."
+},
+{
+"id": "INF-06",
+"D": 8,
+"R": 4,
+"E": 4,
+"A": 2,
+"D2": 4,
+"S": 4,
+"rationale": "Physical sabotage at vertiports compromises landing zones and ground operations locally."
+},
+{
+"id": "SVC-05",
+"D": 8,
+"R": 7,
+"E": 6,
+"A": 6,
+"D2": 6,
+"S": 4,
+"rationale": "Injecting fake geofences causes drones to fly into unauthorized or restricted zones."
+},
+{
+"id": "INF-03",
+"D": 9,
+"R": 5,
+"E": 5,
+"A": 2,
+"D2": 5,
+"S": 5,
+"rationale": "Hardware backdoors or compromised firmware directly jeopardize individual flight control and safety."
+},
+{
+"id": "GOV-01",
+"D": 5,
+"R": 3,
+"E": 3,
+"A": 3,
+"D2": 3,
+"S": 1,
+"rationale": "Compromising regulatory oversight systems impairs accountability and compliance enforcement."
+},
+{
+"id": "INF-07",
+"D": 9,
+"R": 4,
+"E": 4,
+"A": 9,
+"D2": 5,
+"S": 5,
+"rationale": "Compromised components or supply chains introduce widespread backdoors across deployed fleets."
+},
+{
+"id": "INF-04",
+"D": 8,
+"R": 5,
+"E": 5,
+"A": 4,
+"D2": 5,
+"S": 4,
+"rationale": "Power outages or BMS manipulation shut down ground stations or cause mid-air battery failures."
+},
+{
+"id": "SVC-04",
+"D": 8,
+"R": 8,
+"E": 7,
+"A": 9,
+"D2": 7,
+"S": 3,
+"rationale": "Flooding the API gateway disrupts all U-Space services and halts flight authorizations volume-wide."
+},
+{
+"id": "DAT-06",
+"D": 9,
+"R": 7,
+"E": 6,
+"A": 8,
+"D2": 6,
+"S": 3,
+"rationale": "SQL injection leads to mass data exfiltration and corruption of operational flight records."
+},
+{
+"id": "INF-02",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 6,
+"D2": 7,
+"S": 5,
+"rationale": "Jamming or intercepting C2 links can trigger fail-safe crashes or loss of drone control."
+},
+{
+"id": "DAT-05",
+"D": 7,
+"R": 7,
+"E": 6,
+"A": 5,
+"D2": 6,
+"S": 2,
+"rationale": "API key leakage enables bulk exfiltration of sensitive flight plan data without direct safety impact."
+}
+]

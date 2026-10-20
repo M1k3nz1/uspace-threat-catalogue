@@ -5,8 +5,8 @@ Writes ../figures/fig1_overview, fig2_where_models_disagree, fig3_models_vs_publ
 and ../figures/data/*.csv (the numbers behind every panel, i.e. the table view of each chart).
 Usage: python3 make_figures.py      (requires numpy, scipy, matplotlib)
 
-Colour: categorical slots 1-6 of the validated reference palette (blue, orange, aqua, yellow, magenta, green)
-identify the six LLMs in every panel; sequential = one blue ramp; diverging = blue <-> red around grey.
+Colour: categorical slots 1-7 of the validated reference palette (blue, orange, aqua, yellow, magenta, green, violet)
+identify the seven LLMs in every panel; sequential = one blue ramp; diverging = blue <-> red around grey.
 """
 import csv, itertools, os, sys
 import numpy as np
@@ -53,7 +53,7 @@ def kalpha(M):
 
 # ---------------------------------------------------------------- style tokens (reference palette, light)
 SURF, INK, INK2, MUTED, GRID, AXIS = '#ffffff', '#0b0b0b', '#52514e', '#898781', '#e1e0d9', '#c3c2b7'
-CAT = dict(zip(short, ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300']))
+CAT = dict(zip(short, ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#6250d6']))
 SEQ = ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#256abf', '#184f95', '#0d366b']
 ORD = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab', '#0d366b']            # ordinal ramp, step 250 -> 700
 DIV_NEG, DIV_MID, DIV_POS = '#2a78d6', '#f0efec', '#e34948'
@@ -116,7 +116,7 @@ dump('fig1e_tau_runs', ['model', 'run', 'tau', 'inf02_rank'], [[s, k + 1, round(
 dump('fig1f_S_confusion_published_by_llm', ['published_S'] + [f'llm_S{k}' for k in range(1, 6)], [[i + 1] + list(map(int, conf[i])) for i in range(5)])
 
 # ================================================================ FIGURE 1
-fig = plt.figure(figsize=(6.5, 8.5))
+fig = plt.figure(figsize=(6.5, 9.0))
 gs = fig.add_gridspec(3, 6, hspace=0.62, wspace=1.9, left=0.10, right=0.985, top=0.885, bottom=0.05, height_ratios=[0.8, 1, 1.0])
 if WITH_TITLES:
     fig.text(0.10, 0.985, f'How far {N} LLM raters reproduce the published DREAD-S ratings', fontsize=10.5, fontweight='bold', ha='left')
@@ -143,7 +143,7 @@ ax.set_xticks(range(6)); ax.set_xticklabels(DIMS, fontsize=6.8, color=INK2); ax.
 model_labels(ax, short); ax.spines[:].set_visible(False)
 for k in range(1, 6): ax.axvline(k - 0.5, color=SURF, lw=1.6)
 for k in range(1, N): ax.axhline(k - 0.5, color=SURF, lw=1.6)
-title(ax, 'b', 'Claude rates likelihood lower, GPT-6 does not', 'Mean rating, LLM minus published (blue = LLM lower, red = higher)', top=True)
+title(ax, 'b', 'Most models rate likelihood lower, GPT-6 does not', 'Mean rating, LLM minus published (blue = LLM lower, red = higher)', top=True)
 ax.title.set_visible(False)
 
 for _a in fig.axes[:2]:                      # pull the first row closer to the second
@@ -153,7 +153,7 @@ ax = fig.add_subplot(gs[1, :3]); order = np.argsort(mad5)
 for pos, k in enumerate(order):
     s = short[k]; ax.barh(pos, mad5[k], height=0.55, color=CAT[s], zorder=3)
     ax.text(mad5[k] + 0.03, pos, f'{mad5[k]:.2f}', va='center', fontsize=7, color=INK, fontweight='semibold' if pos == 0 else 'normal')
-    ax.text(0.02, pos, f'{s}  {name[s].replace("Claude ", "")}', va='center', ha='left', fontsize=6.4, color='#ffffff' if CAT[s] in ('#2a78d6', '#008300') else INK, zorder=4)
+    ax.text(0.02, pos, f'{s}  {name[s].replace("Claude ", "").replace("Google ", "")}', va='center', ha='left', fontsize=6.4, color='#ffffff' if CAT[s] in ('#2a78d6', '#008300', '#6250d6') else INK, zorder=4)
 ax.set_yticks([]); ax.set_ylim(len(short) - 0.4, -0.6); ax.set_xlim(0, 2.1); ax.set_xticks([0, 0.5, 1, 1.5, 2])
 ax.xaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.spines['left'].set_visible(False)
 ax.set_xlabel('Mean absolute deviation per DREAD rating (points)', fontsize=6.8)
@@ -178,7 +178,7 @@ model_labels(ax, rows)
 ax.set_xlim(0, 21)
 for b in range(5): ax.barh(-5, 0, color=ORD[b], label=BANDS[b])
 ax.legend(ncol=5, fontsize=6, frameon=False, loc='upper center', bbox_to_anchor=(0.45, -0.20), handlelength=0.9, handleheight=0.9, columnspacing=0.8, handletextpad=0.35)
-title(ax, 'd', 'Claude shifts bands down; GPT-6 stays closer', 'Distribution of the 21 entries over the DREAD-S bands')
+title(ax, 'd', 'Most models shift bands down; GPT-6 stays closer', 'Distribution of the 21 entries over the DREAD-S bands')
 ax.title.set_visible(False)
 
 # (e1) tau strip
@@ -197,7 +197,7 @@ ax = fig.add_subplot(gs[2, 2:4])
 for i, s in enumerate(short):
     ys = np.array(inf02[s]); xs = i + np.array([-0.16, 0, 0.16]); ax.plot(xs, ys, 'o', ms=5.2, color=CAT[s], mec=SURF, mew=1.2, zorder=4, ls='none')
 ax.axhline(pub_inf02, color=INK, lw=0.9); ax.text(N - 0.5, pub_inf02 + 0.18, 'published: 1st', ha='right', va='top', fontsize=6, color=INK2)
-ax.set_ylim(10.7, 0.5); ax.set_yticks([1, 2, 4, 6, 8, 10]); ax.set_xlim(-0.6, N - 0.4); ax.set_xticks(range(N)); ax.set_xticklabels([s.split()[1] for s in short], color=INK2, fontsize=7)
+ax.set_ylim(13.7, 0.5); ax.set_yticks([1, 2, 4, 6, 8, 10, 13]); ax.set_xlim(-0.6, N - 0.4); ax.set_xticks(range(N)); ax.set_xticklabels([s.split()[1] for s in short], color=INK2, fontsize=7)
 ax.yaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.set_ylabel('Rank of comm. networks (INF-02)', fontsize=6.6)
 title(ax, 'f', 'First place never reproduced', f'never 1st in any of {NR} runs')
 ax.title.set_visible(False)
@@ -263,7 +263,7 @@ save(fig, 'fig2_where_models_disagree')
 labs = short + ['Published']; NL = N + 1; mm = [R[s].mean(0) for s in short] + [pub]
 tm = np.array([[kendalltau(ds(a), ds(b))[0] for b in mm] for a in mm])
 mad_m = np.array([[np.abs(a[:, :5] - b[:, :5]).mean() for b in mm] for a in mm])
-fig = plt.figure(figsize=(6.5, 3.6))
+fig = plt.figure(figsize=(6.5, 3.9))
 gs = fig.add_gridspec(1, 2, width_ratios=[1, 1.12], wspace=0.42, left=0.085, right=0.985, top=0.74, bottom=0.17)
 if WITH_TITLES: fig.text(0.02, 0.96, f'The {N} models agree with each other more than with the published ratings', fontsize=10.5, fontweight='bold', ha='left')
 ax = fig.add_subplot(gs[0, 0]); mask = np.triu(np.ones((NL, N), bool), 0)
@@ -271,33 +271,35 @@ cm2 = mcolors.LinearSegmentedColormap.from_list('t', SEQ[:6]); lo, hi = 0.5, 1.0
 ax.imshow(np.where(mask, np.nan, np.clip(tm[:, :N], lo, hi)), cmap=cm2, vmin=lo, vmax=hi, aspect='equal')
 for i in range(NL):
     for j in range(i):
-        ax.text(j, i, f'{tm[i, j]:.2f}', ha='center', va='center', fontsize=6.6, color=lum_text(cm2((np.clip(tm[i, j], lo, hi) - lo) / (hi - lo))))
+        ax.text(j, i, f'{tm[i, j]:.2f}', ha='center', va='center', fontsize=6.0, color=lum_text(cm2((np.clip(tm[i, j], lo, hi) - lo) / (hi - lo))))
     if i == j: pass
 ax.set_xticks(range(N)); ax.set_xticklabels([l.replace('LLM ', '') for l in labs[:N]], fontsize=7, color=INK2)
 ax.set_yticks(range(NL)); ax.set_yticklabels([l.replace('LLM ', '') for l in labs], fontsize=7, color=INK2)
 ax.xaxis.tick_top(); ax.tick_params(length=0); ax.spines[:].set_visible(False)
 ax.add_patch(plt.Rectangle((-0.5, N - 0.5), N, 1, fill=False, ec=INK, lw=1.0))
 title(ax, 'a', 'Models rank the entries more alike', "Kendall's τ between DREAD-S rankings; outlined row: published", top=True)
-# (b) strip: pairwise MAD in three groups (Claude-Claude, Claude-GPT-6, model vs published)
+# (b) strip: pairwise MAD in four groups (Claude-Claude, Claude-Gemini, GPT-6 with the others, model vs published)
 ax = fig.add_subplot(gs[0, 1])
-ci = [i for i, s in enumerate(short) if s in CLAUDE]; oi = [i for i in range(N) if i not in ci]
-g1 = [(a, b) for a, b in itertools.combinations(ci, 2)]                      # same provider
-g2 = [(a, b) for a in ci for b in oi]                                       # across providers
-g3 = [(a, N) for a in range(N)]                                             # model vs published
-groups = [g1, g2, g3]; gx = [0, 1, 2]
+ci = [i for i, s in enumerate(short) if s in CLAUDE]
+gi = short.index('LLM G') if 'LLM G' in short else None; fi = short.index('LLM F') if 'LLM F' in short else None
+g1 = [(a, b) for a, b in itertools.combinations(ci, 2)]                                  # Claude - Claude
+g2 = [(a, gi) for a in ci]                                                               # Claude - Gemini
+g3 = [(a, fi) for a in ci] + [(fi, gi)]                                                  # GPT-6 with the others
+g4 = [(a, N) for a in range(N)]                                                          # model vs published
+groups = [g1, g2, g3, g4]; gx = [0, 1, 2, 3]
 for x, g in zip(gx, groups):
     y = [mad_m[a, b] for a, b in g]
-    if x < 2: ax.plot(np.zeros(len(y)) + x + np.linspace(-0.14, 0.14, len(y)), y, 'o', ms=5.2, color=MUTED, mec=SURF, mew=1.1, zorder=3)
+    if x < 3: ax.plot(np.zeros(len(y)) + x + np.linspace(-0.14, 0.14, len(y)), y, 'o', ms=5.0, color=MUTED, mec=SURF, mew=1.1, zorder=3)
     else:
-        for k, (a, b) in enumerate(g): ax.plot(x + (k - (len(g) - 1) / 2) * 0.10, y[k], 'o', ms=5.6, color=CAT[short[a]], mec=SURF, mew=1.2, zorder=3)
+        for k, (a, b) in enumerate(g): ax.plot(x + (k - (len(g) - 1) / 2) * 0.09, y[k], 'o', ms=5.4, color=CAT[short[a]], mec=SURF, mew=1.2, zorder=3)
     ax.plot([x - 0.3, x + 0.3], [np.mean(y)] * 2, color=INK, lw=1.2, zorder=4)
-    ax.text(x + 0.34, np.mean(y), f'{np.mean(y):.2f}', va='center', fontsize=7, fontweight='semibold')
-ax.set_xlim(-0.6, 2.75); ax.set_ylim(0, 1.9); ax.set_xticks(gx)
-ax.set_xticklabels([f'Claude–Claude\n{len(g1)} pairs', f'Claude–GPT-6\n{len(g2)} pairs', f'Model–published\n{N} models'], fontsize=6.4, color=INK2)
+    ax.text(x + (0.42 if x == 3 else 0.33), np.mean(y) + (-0.07 if x == 3 else 0), f'{np.mean(y):.2f}', va='center', fontsize=6.6, fontweight='semibold')
+ax.set_xlim(-0.55, 3.95); ax.set_ylim(0, 1.9); ax.set_xticks(gx)
+ax.set_xticklabels([f'Claude–\nClaude\n{len(g1)} pairs', f'Claude–\nGemini\n{len(g2)} pairs', f'GPT-6 with\nothers\n{len(g3)} pairs', f'Model vs\npublished\n{N} models'], fontsize=6.0, color=INK2)
 ax.yaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.set_ylabel('Mean absolute deviation, five DREAD\nratings (mean of 3 runs per model)', fontsize=6.6)
-title(ax, 'b', 'Same-provider models are closest', 'Each dot is one pair; coloured: model vs published', top=True)
-for k, (a, b) in enumerate(g3): ax.text(2 + (k - (len(g3) - 1) / 2) * 0.10, mad_m[a, b] + 0.09, short[a].split()[1], ha='center', fontsize=5.8, color=INK2)
+title(ax, 'b', 'Models of one family are closest', 'Each dot is one pair; coloured: model vs published', top=True)
+for k, (a, b) in enumerate(g4): ax.text(3 + (k - (len(g4) - 1) / 2) * 0.09, mad_m[a, b] + (-0.15 if short[a] == 'LLM G' else 0.09), short[a].split()[1], ha='center', fontsize=5.4, color=INK2)
 dump('fig3a_tau_between', ['rater'] + labs, [[l] + list(np.round(r, 3)) for l, r in zip(labs, tm)])
-dump('fig3b_mad_pairs', ['pair', 'MAD_five_dread'], [[f'{short[a]} vs {short[b]}', round(mad_m[a, b], 3)] for a, b in g1 + g2] + [[f'{short[a]} vs published', round(mad_m[a, N], 3)] for a in range(N)])
+dump('fig3b_mad_pairs', ['pair', 'MAD_five_dread'], [[f'{short[a]} vs {short[b]}', round(mad_m[a, b], 3)] for a, b in g1 + g2 + g3] + [[f'{short[a]} vs published', round(mad_m[a, N], 3)] for a in range(N)])
 save(fig, 'fig3_models_vs_published')
 print('figures written to', os.path.abspath(OUT))
