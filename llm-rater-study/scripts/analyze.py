@@ -98,12 +98,31 @@ if len(models) > 1:
     md += ['\n', table(['Rater', 'tau', 'bands changed', 'bands raised', 'top-7 overlap', 'first', 'INF-02 rank', 'gov in 5 lowest', 'highest band'],
                          [rank_row('median of all runs', ds(np.median(P, 0)))])]
     save('agreement_pooled.csv', ['dim', 'alpha', 'icc', 'mad', 'within1'], a)
+    cl = [m for m in models if 'Claude' in m]
+    if 0 < len(cl) < len(models):
+        PC = np.concatenate([runs[m] for m in cl]); ac = agreement(PC)
+        md += [f'\n## Claude runs only ({len(PC)} runs pooled)\n', table(['Dim', 'alpha', 'ICC(2,1)', 'MAD vs published', 'within +-1'], ac)]
+        md += ['\n', table(['Rater', 'tau', 'bands changed', 'bands raised', 'top-7 overlap', 'first', 'INF-02 rank', 'gov in 5 lowest', 'highest band'],
+                             [rank_row('median of Claude runs', ds(np.median(PC, 0)))])]
+        save('agreement_pooled_claude.csv', ['dim', 'alpha', 'icc', 'mad', 'within1'], ac)
     md.append('\n## Between-model agreement (means of each model\'s runs)\n')
     for x, y in itertools.combinations(models, 2):
         mx, my = runs[x].mean(0), runs[y].mean(0)
         rows = [[nm, np.corrcoef(mx[:, j], my[:, j])[0, 1], np.abs(mx[:, j] - my[:, j]).mean()] for j, nm in enumerate(DIMS)]
         rows.append(['DREAD-S tau', kendalltau(ds(mx), ds(my))[0], np.abs(ds(mx) - ds(my)).mean()])
         md += [f'\n{x} vs {y}\n', table(['Dim', 'Pearson r', 'MAD of run means'], rows)]
+if len(models) > 1:
+    cl = [m for m in models if 'Claude' in m]; ot = [m for m in models if 'Claude' not in m]
+    if cl and ot:
+        def pairstats(pairs):
+            mad = [np.abs(runs[x].mean(0)[:, :5] - runs[y].mean(0)[:, :5]).mean() for x, y in pairs]
+            tau = [kendalltau(ds(runs[x].mean(0)), ds(runs[y].mean(0)))[0] for x, y in pairs]
+            return min(mad), max(mad), np.mean(mad), min(tau), max(tau), np.mean(tau)
+        within = list(itertools.combinations(cl, 2)); across = [(c, o) for c in cl for o in ot]
+        md.append('\n## Between-model agreement by provider group (MAD of the five DREAD ratings, run means; Kendall tau of DREAD-S)\n')
+        for nm, pr in (('Claude vs Claude', within), ('Claude vs other provider', across)):
+            r = pairstats(pr); md.append(f'\n{nm}: {len(pr)} pairs; MAD {r[0]:.2f}-{r[1]:.2f} (mean {r[2]:.2f}); tau {r[3]:.2f}-{r[4]:.2f} (mean {r[5]:.2f})')
+        md.append('\n')
 open(os.path.join(HERE, '../results/summary.md'), 'w').write(''.join(md))
 print(''.join(md))
 
@@ -112,15 +131,18 @@ def rng(vals, f):
     lo, hi = min(vals), max(vals); return f(lo) if f(lo) == f(hi) else f(lo) + '--' + f(hi)
 ordn = lambda n: {1: '1st', 2: '2nd', 3: '3rd'}.get(n, f'{n}th')
 P = np.concatenate([runs[m] for m in models]); sets = [(m.split(' (')[0], runs[m]) for m in models]
-tb = ['# Tables of Section 8.5 (computed)\n', '\n## Table: alpha per dimension (columns: ' + ', '.join(n for n, _ in sets) + ', All)\n',
-      '| Dimension | ' + ' | '.join(n.split()[-1] for n, _ in sets) + ' | All |\n|' + '---|' * (len(sets) + 2) + '\n']
+_cl = [m for m in models if 'Claude' in m]; PC = np.concatenate([runs[m] for m in _cl]) if _cl else P
+_two = 0 < len(_cl) < len(models)
+pools = ([('Claude', PC)] if _two else []) + [('All', P)]
+tb = ['# Tables of Section 8.5 (computed)\n', '\n## Table: alpha per dimension (columns: ' + ', '.join(n for n, _ in sets) + ', ' + ', '.join(n for n, _ in pools) + ')\n',
+      '| Dimension | ' + ' | '.join(n.split()[-1] for n, _ in sets) + ' | ' + ' | '.join(n for n, _ in pools) + ' |\n|' + '---|' * (len(sets) + len(pools) + 1) + '\n']
 for j, nm in enumerate(DIMS + ['DREAD-S']):
     cells = []
-    for _, R in sets + [('All', P)]:
+    for _, R in sets + pools:
         X = R[:, :, j] if j < 6 else np.array([ds(r) for r in R]); cells.append(f'{kalpha(X):.2f}')
     tb.append(f'| {nm} | ' + ' | '.join(cells) + ' |\n')
 tb.append('\n## Table: deviation from the published ratings\n\n| Rater | Runs MAD | DREAD MAD | DREAD within 1 | S MAD | S within 1 | Mean DREAD-S |\n|---|---|---|---|---|---|---|\n')
-for n, R in sets + [('All runs', P)]:
+for n, R in sets + [((f'Claude, all {len(PC)} runs' if _two else None), PC)] * _two + [(f'All {len(P)} runs', P)]:
     k = len(R); inter = np.mean([np.abs(R[x][:, :5] - R[y][:, :5]).mean() for x in range(k) for y in range(x + 1, k)])
     tb.append(f'| {n} | {inter:.2f} | {np.abs(R[:, :, :5] - pub[:, :5]).mean():.2f} | {(np.abs(R[:, :, :5] - pub[:, :5]) <= 1).mean():.0%} | '
               f'{np.abs(R[:, :, 5] - pub[:, 5]).mean():.2f} | {(np.abs(R[:, :, 5] - pub[:, 5]) <= 1).mean():.0%} | {np.mean([ds(r).mean() for r in R]):.2f} |\n')
@@ -130,6 +152,9 @@ for n, R in sets:
     rr = [rank_row('', ds(r)) for r in R]
     tb.append(f'| {n} | {rng([r[1] for r in rr], lambda x: f"{x:.2f}")} | {rng([r[2] for r in rr], str)} | {rng([r[4] for r in rr], lambda x: f"{x:.2f}")} | '
               f'{rng([r[6] for r in rr], ordn)} | {rng([r[7] for r in rr], lambda x: f"{x:.0%}")} | {sum(r[8] == "Critical" for r in rr)}/{len(rr)} |\n')
+if _two:
+    r = rank_row('', ds(np.median(PC, 0)))
+    tb.append(f'| Median of the {len(PC)} Claude runs | {r[1]:.2f} | {r[2]} | {r[4]:.2f} | {ordn(r[6])} | {r[7]:.0%} | {r[8]} |\n')
 r = rank_row('', ds(np.median(P, 0)))
 tb.append(f'| Median of all {len(P)} runs | {r[1]:.2f} | {r[2]} | {r[4]:.2f} | {ordn(r[6])} | {r[7]:.0%} | {r[8]} |\n')
 open(os.path.join(HERE, '../results/paper_tables.md'), 'w').write(''.join(tb))

@@ -5,8 +5,8 @@ Writes ../figures/fig1_overview, fig2_where_models_disagree, fig3_models_vs_publ
 and ../figures/data/*.csv (the numbers behind every panel, i.e. the table view of each chart).
 Usage: python3 make_figures.py      (requires numpy, scipy, matplotlib)
 
-Colour: categorical slots 1-5 of the validated reference palette (blue, orange, aqua, yellow, magenta)
-identify the five LLMs in every panel; sequential = one blue ramp; diverging = blue <-> red around grey.
+Colour: categorical slots 1-6 of the validated reference palette (blue, orange, aqua, yellow, magenta, green)
+identify the six LLMs in every panel; sequential = one blue ramp; diverging = blue <-> red around grey.
 """
 import csv, itertools, os, sys
 import numpy as np
@@ -37,6 +37,9 @@ for s, m in zip(short, models):
     R[s] = np.array([[[float(next(x[k] for x in raw if x['id'] == i and x['model'] == m and int(x['run']) == n)) for k in DIMS]
                       for i in ids] for n in rs])
 P = np.concatenate([R[s] for s in short])
+N = len(short); NR = len(P); NC = len([s for s in short if name[s].startswith('Claude')])   # models, runs, Claude models
+CLAUDE = [s for s in short if name[s].startswith('Claude')]
+K = R[short[0]].shape[0]
 nu = lambda x: 1 + 4 * (x - 1) / 9
 ds = lambda a: (nu(a[:, :5]).sum(1) + a[:, 5]) / 6
 band = lambda v: np.select([v <= 1.8, v <= 2.6, v <= 3.4, v <= 4.2], [0, 1, 2, 3], 4)
@@ -50,7 +53,7 @@ def kalpha(M):
 
 # ---------------------------------------------------------------- style tokens (reference palette, light)
 SURF, INK, INK2, MUTED, GRID, AXIS = '#ffffff', '#0b0b0b', '#52514e', '#898781', '#e1e0d9', '#c3c2b7'
-CAT = dict(zip(short, ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4']))
+CAT = dict(zip(short, ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300']))
 SEQ = ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#256abf', '#184f95', '#0d366b']
 ORD = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab', '#0d366b']            # ordinal ramp, step 250 -> 700
 DIV_NEG, DIV_MID, DIV_POS = '#2a78d6', '#f0efec', '#e34948'
@@ -113,11 +116,11 @@ dump('fig1e_tau_runs', ['model', 'run', 'tau', 'inf02_rank'], [[s, k + 1, round(
 dump('fig1f_S_confusion_published_by_llm', ['published_S'] + [f'llm_S{k}' for k in range(1, 6)], [[i + 1] + list(map(int, conf[i])) for i in range(5)])
 
 # ================================================================ FIGURE 1
-fig = plt.figure(figsize=(6.5, 7.6))
-gs = fig.add_gridspec(3, 6, hspace=0.62, wspace=1.9, left=0.10, right=0.985, top=0.885, bottom=0.05, height_ratios=[1, 1, 1.02])
+fig = plt.figure(figsize=(6.5, 8.5))
+gs = fig.add_gridspec(3, 6, hspace=0.62, wspace=1.9, left=0.10, right=0.985, top=0.885, bottom=0.05, height_ratios=[0.8, 1, 1.0])
 if WITH_TITLES:
-    fig.text(0.10, 0.985, 'How far five LLM raters reproduce the published DREAD-S ratings', fontsize=10.5, fontweight='bold', ha='left')
-    fig.text(0.10, 0.964, '21 catalogue entries, 3 runs per model (15 runs), same prompt, high reasoning effort; published ratings are the baseline', fontsize=7, color=INK2, ha='left')
+    fig.text(0.10, 0.985, f'How far {N} LLM raters reproduce the published DREAD-S ratings', fontsize=10.5, fontweight='bold', ha='left')
+    fig.text(0.10, 0.964, f'21 catalogue entries, {K} runs per model ({NR} runs), same prompt; published ratings are the baseline', fontsize=7, color=INK2, ha='left')
 
 # (a) consistency heatmap
 ax = fig.add_subplot(gs[0, :3]); cols = ['D', 'R', 'E', 'A', 'D2', 'S', 'DREAD-S']
@@ -127,7 +130,7 @@ for (i, j), v in np.ndenumerate(alpha): ax.text(j, i, f'{v:.2f}', ha='center', v
 ax.set_xticks(range(7)); ax.set_xticklabels(cols, fontsize=6.8, color=INK2); ax.xaxis.tick_top(); ax.tick_params(length=0)
 model_labels(ax, short); ax.spines[:].set_visible(False)
 for k in range(1, 7): ax.axvline(k - 0.5, color=SURF, lw=1.6)
-for k in range(1, 5): ax.axhline(k - 0.5, color=SURF, lw=1.6)
+for k in range(1, N): ax.axhline(k - 0.5, color=SURF, lw=1.6)
 ax.axvline(5.5, color=SURF, lw=3)
 title(ax, 'a', 'Each model is consistent with itself', "Krippendorff's α across its 3 runs (darker = more consistent)", top=True)
 ax.title.set_visible(False)
@@ -139,20 +142,22 @@ for (i, j), v in np.ndenumerate(bias): ax.text(j, i, f'{v:+.1f}', ha='center', v
 ax.set_xticks(range(6)); ax.set_xticklabels(DIMS, fontsize=6.8, color=INK2); ax.xaxis.tick_top(); ax.tick_params(length=0)
 model_labels(ax, short); ax.spines[:].set_visible(False)
 for k in range(1, 6): ax.axvline(k - 0.5, color=SURF, lw=1.6)
-for k in range(1, 5): ax.axhline(k - 0.5, color=SURF, lw=1.6)
-title(ax, 'b', 'All rate likelihood below the published ratings', 'Mean rating, LLM minus published (blue = LLM lower, red = higher)', top=True)
+for k in range(1, N): ax.axhline(k - 0.5, color=SURF, lw=1.6)
+title(ax, 'b', 'Claude rates likelihood lower, GPT-6 does not', 'Mean rating, LLM minus published (blue = LLM lower, red = higher)', top=True)
 ax.title.set_visible(False)
 
+for _a in fig.axes[:2]:                      # pull the first row closer to the second
+    p = _a.get_position(); _a.set_position([p.x0, p.y0 - 0.05, p.width, p.height])
 # (c) closest model
 ax = fig.add_subplot(gs[1, :3]); order = np.argsort(mad5)
 for pos, k in enumerate(order):
     s = short[k]; ax.barh(pos, mad5[k], height=0.55, color=CAT[s], zorder=3)
     ax.text(mad5[k] + 0.03, pos, f'{mad5[k]:.2f}', va='center', fontsize=7, color=INK, fontweight='semibold' if pos == 0 else 'normal')
-    ax.text(0.02, pos, f'{s}  {name[s].replace("Claude ", "")}', va='center', ha='left', fontsize=6.4, color='#ffffff' if s in ('LLM A',) else INK, zorder=4)
+    ax.text(0.02, pos, f'{s}  {name[s].replace("Claude ", "")}', va='center', ha='left', fontsize=6.4, color='#ffffff' if CAT[s] in ('#2a78d6', '#008300') else INK, zorder=4)
 ax.set_yticks([]); ax.set_ylim(len(short) - 0.4, -0.6); ax.set_xlim(0, 2.1); ax.set_xticks([0, 0.5, 1, 1.5, 2])
 ax.xaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.spines['left'].set_visible(False)
 ax.set_xlabel('Mean absolute deviation per DREAD rating (points)', fontsize=6.8)
-title(ax, 'c', f'{name["LLM C"].replace("Claude ", "")} is the closest, newest is not', 'Deviation from the published ratings, five DREAD ratings, sorted')
+title(ax, 'c', f'{name[short[order[0]]].replace("Claude ", "").replace("OpenAI ", "")} is closest; none is close', 'Deviation from the published ratings, five DREAD ratings, sorted')
 ax.title.set_visible(False)
 
 # (d) bands stacked
@@ -167,13 +172,13 @@ for i, rw in enumerate(rows):
         left += v
     if i > 0: ax.text(21.6, i, f'{inband[i - 1]:.0%}', va='center', ha='left', fontsize=6.8, color=INK)
 ax.text(21.6, -0.95, 'stay in\npublished band', fontsize=6, color=INK2, ha='left', va='center')
-ax.set_xlim(0, 21); ax.set_ylim(5.5, -0.5); ax.set_xticks([0, 7, 14, 21]); ax.set_yticks([]); ax.spines['left'].set_visible(False)
+ax.set_xlim(0, 21); ax.set_ylim(N + 0.5, -0.5); ax.set_xticks([0, 7, 14, 21]); ax.set_yticks([]); ax.spines['left'].set_visible(False)
 ax.spines['bottom'].set_color(AXIS); ax.set_xlabel('Entries per band (mean of 3 runs)', fontsize=6.8)
 model_labels(ax, rows)
 ax.set_xlim(0, 21)
 for b in range(5): ax.barh(-5, 0, color=ORD[b], label=BANDS[b])
 ax.legend(ncol=5, fontsize=6, frameon=False, loc='upper center', bbox_to_anchor=(0.45, -0.20), handlelength=0.9, handleheight=0.9, columnspacing=0.8, handletextpad=0.35)
-title(ax, 'd', 'Bands shift down: only about half the entries stay put', 'Distribution of the 21 entries over the DREAD-S bands')
+title(ax, 'd', 'Claude shifts bands down; GPT-6 stays closer', 'Distribution of the 21 entries over the DREAD-S bands')
 ax.title.set_visible(False)
 
 # (e1) tau strip
@@ -181,8 +186,8 @@ ax = fig.add_subplot(gs[2, :2]); rng = np.random.default_rng(3)
 for i, s in enumerate(short):
     xs = i + np.array([-0.16, 0, 0.16]); ax.plot(xs, tau[s], 'o', ms=5.2, color=CAT[s], mec=SURF, mew=1.2, zorder=4, ls='none')
     ax.plot([i - 0.28, i + 0.28], [np.mean(tau[s])] * 2, color=INK, lw=1.2, zorder=5)
-ax.axhline(0.87, color=MUTED, lw=0.8, ls=(0, (4, 2))); ax.text(4.45, 0.885, 'ratings ±1 (perturbation) 0.87', ha='right', va='bottom', fontsize=6, color=INK2)
-ax.set_ylim(0.2, 1.0); ax.set_xlim(-0.6, 4.6); ax.set_xticks(range(5)); ax.set_xticklabels([s.split()[1] for s in short], color=INK2, fontsize=7)
+ax.axhline(0.87, color=MUTED, lw=0.8, ls=(0, (4, 2))); ax.text(N - 0.55, 0.885, 'ratings ±1 (perturbation) 0.87', ha='right', va='bottom', fontsize=6, color=INK2)
+ax.set_ylim(0.2, 1.0); ax.set_xlim(-0.6, N - 0.4); ax.set_xticks(range(N)); ax.set_xticklabels([s.split()[1] for s in short], color=INK2, fontsize=7)
 ax.yaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.set_ylabel("Kendall's τ with published ranking", fontsize=6.6)
 title(ax, 'e', 'Ranking only partly kept', 'τ per run, bar = mean')
 ax.title.set_visible(False)
@@ -191,10 +196,10 @@ ax.title.set_visible(False)
 ax = fig.add_subplot(gs[2, 2:4])
 for i, s in enumerate(short):
     ys = np.array(inf02[s]); xs = i + np.array([-0.16, 0, 0.16]); ax.plot(xs, ys, 'o', ms=5.2, color=CAT[s], mec=SURF, mew=1.2, zorder=4, ls='none')
-ax.axhline(pub_inf02, color=INK, lw=0.9); ax.text(4.5, pub_inf02 + 0.12, 'published: 1st', ha='right', va='top', fontsize=6, color=INK2)
-ax.set_ylim(6.7, 0.5); ax.set_yticks([1, 2, 3, 4, 5, 6]); ax.set_xlim(-0.6, 4.6); ax.set_xticks(range(5)); ax.set_xticklabels([s.split()[1] for s in short], color=INK2, fontsize=7)
+ax.axhline(pub_inf02, color=INK, lw=0.9); ax.text(N - 0.5, pub_inf02 + 0.18, 'published: 1st', ha='right', va='top', fontsize=6, color=INK2)
+ax.set_ylim(10.7, 0.5); ax.set_yticks([1, 2, 4, 6, 8, 10]); ax.set_xlim(-0.6, N - 0.4); ax.set_xticks(range(N)); ax.set_xticklabels([s.split()[1] for s in short], color=INK2, fontsize=7)
 ax.yaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.set_ylabel('Rank of comm. networks (INF-02)', fontsize=6.6)
-title(ax, 'f', 'First place never reproduced', 'GNSS (INF-01) is 1st in all 15 runs')
+title(ax, 'f', 'First place never reproduced', f'never 1st in any of {NR} runs')
 ax.title.set_visible(False)
 
 # (f) S confusion
@@ -207,19 +212,19 @@ ax.add_patch(plt.Rectangle((-0.5, -0.5), 5, 5, fill=False, ec=AXIS, lw=0.7))
 ax.set_xticks(range(5)); ax.set_xticklabels(range(1, 6), color=INK2); ax.set_yticks(range(5)); ax.set_yticklabels(range(1, 6), color=INK2)
 ax.set_xlabel('LLM Safety impact S', fontsize=6.8); ax.set_ylabel('Published S', fontsize=6.8); ax.spines[:].set_visible(False); ax.tick_params(length=0)
 w1 = (np.abs(P[:, :, 5] - pub[:, 5]) <= 1).mean()
-title(ax, 'g', 'Safety impact transfers well', f'{w1:.0%} of 315 ratings within one level')
+title(ax, 'g', 'Safety impact transfers well', f'{w1:.0%} of {NR * 21} ratings within one level')
 ax.title.set_visible(False)
 save(fig, 'fig1_overview')
 
 # ================================================================ FIGURE 2: where models disagree
-mean15 = P.mean(0); dev = mean15 - pub
+meanall = P.mean(0); dev = meanall - pub
 modmean = {s: R[s].mean(0) for s in short}
 order_ids = list(range(21))
 fig = plt.figure(figsize=(6.5, 5.4))
 gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 1.28], wspace=0.62, left=0.215, right=0.985, top=0.815, bottom=0.07)
 if WITH_TITLES:
     fig.text(0.02, 0.975, 'Where the models disagree with the published ratings', fontsize=10.5, fontweight='bold', ha='left')
-    fig.text(0.02, 0.948, 'Mean of 15 runs against the published rating, per entry and rating; the same entries are off in every model', fontsize=7, color=INK2, ha='left')
+    fig.text(0.02, 0.948, f'Mean of {NR} runs against the published rating, per entry and rating', fontsize=7, color=INK2, ha='left')
 ax = fig.add_subplot(gs[0, 0]); lim = 4.0
 ax.imshow(dev, cmap=div_cmap, vmin=-lim, vmax=lim, aspect='auto')
 for (i, j), v in np.ndenumerate(dev):
@@ -249,44 +254,50 @@ ax.spines['left'].set_visible(False); ax.tick_params(axis='y', length=0)
 ax.set_xlabel('Rating (1–10; Safety impact 1–5)', fontsize=6.8)
 title(ax, 'b', 'The twelve largest gaps', '◆ published rating, ● mean of each model’s 3 runs', top=True)
 handles = [plt.Line2D([], [], marker='D', ls='none', ms=5.5, color=INK, mec=SURF, label='Published')] + [plt.Line2D([], [], marker='o', ls='none', ms=5.5, color=CAT[s], mec=SURF, label=f'{s}  {name[s].replace("Claude ", "")}') for s in short]
-ax.legend(handles=handles, ncol=3, fontsize=6.2, frameon=False, loc='upper center', bbox_to_anchor=(0.45, -0.075), columnspacing=1.0, handletextpad=0.2)
-dump('fig2a_signed_deviation_mean15', ['id'] + DIMS, [[i] + list(np.round(d, 2)) for i, d in zip(ids, dev)])
+ax.legend(handles=handles, ncol=4, fontsize=6.2, frameon=False, loc='upper center', bbox_to_anchor=(0.45, -0.075), columnspacing=1.0, handletextpad=0.2)
+dump('fig2a_signed_deviation_mean_all_runs', ['id'] + DIMS, [[i] + list(np.round(d, 2)) for i, d in zip(ids, dev)])
 dump('fig2b_top12_gaps', ['entry', 'rating', 'published'] + short, [[ids[i], DIMN[DIMS[j]], pub[i, j]] + [round(modmean[s][i, j], 2) for s in short] for i, j in top])
 save(fig, 'fig2_where_models_disagree')
 
 # ================================================================ FIGURE 3: models vs you
-labs = short + ['Published']; mm = [R[s].mean(0) for s in short] + [pub]
+labs = short + ['Published']; NL = N + 1; mm = [R[s].mean(0) for s in short] + [pub]
 tm = np.array([[kendalltau(ds(a), ds(b))[0] for b in mm] for a in mm])
 mad_m = np.array([[np.abs(a[:, :5] - b[:, :5]).mean() for b in mm] for a in mm])
-fig = plt.figure(figsize=(6.5, 3.45))
+fig = plt.figure(figsize=(6.5, 3.6))
 gs = fig.add_gridspec(1, 2, width_ratios=[1, 1.12], wspace=0.42, left=0.085, right=0.985, top=0.74, bottom=0.17)
-if WITH_TITLES: fig.text(0.02, 0.96, 'The five models agree with each other more than with the published ratings', fontsize=10.5, fontweight='bold', ha='left')
-ax = fig.add_subplot(gs[0, 0]); mask = np.triu(np.ones((6, 6), bool), 0)
-show = np.where(mask, np.nan, tm); cm2 = mcolors.LinearSegmentedColormap.from_list('t', SEQ[:6]); lo, hi = 0.5, 1.0
-ax.imshow(np.where(mask, np.nan, np.clip(tm, lo, hi)), cmap=cm2, vmin=lo, vmax=hi, aspect='equal')
-for i in range(6):
+if WITH_TITLES: fig.text(0.02, 0.96, f'The {N} models agree with each other more than with the published ratings', fontsize=10.5, fontweight='bold', ha='left')
+ax = fig.add_subplot(gs[0, 0]); mask = np.triu(np.ones((NL, N), bool), 0)
+cm2 = mcolors.LinearSegmentedColormap.from_list('t', SEQ[:6]); lo, hi = 0.5, 1.0
+ax.imshow(np.where(mask, np.nan, np.clip(tm[:, :N], lo, hi)), cmap=cm2, vmin=lo, vmax=hi, aspect='equal')
+for i in range(NL):
     for j in range(i):
         ax.text(j, i, f'{tm[i, j]:.2f}', ha='center', va='center', fontsize=6.6, color=lum_text(cm2((np.clip(tm[i, j], lo, hi) - lo) / (hi - lo))))
     if i == j: pass
-ax.set_xticks(range(6)); ax.set_xticklabels([l.replace('LLM ', '') for l in labs], fontsize=7, color=INK2)
-ax.set_yticks(range(6)); ax.set_yticklabels([l.replace('LLM ', '') for l in labs], fontsize=7, color=INK2)
+ax.set_xticks(range(N)); ax.set_xticklabels([l.replace('LLM ', '') for l in labs[:N]], fontsize=7, color=INK2)
+ax.set_yticks(range(NL)); ax.set_yticklabels([l.replace('LLM ', '') for l in labs], fontsize=7, color=INK2)
 ax.xaxis.tick_top(); ax.tick_params(length=0); ax.spines[:].set_visible(False)
-for k in range(6): ax.add_patch(plt.Rectangle((5 - 0.5, k - 0.5), 1, 1, fill=False, ec=INK, lw=0.0))
-ax.add_patch(plt.Rectangle((-0.5, 4.5), 5, 1, fill=False, ec=INK, lw=1.0))
-title(ax, 'a', 'Models rank the entries alike', "Kendall's τ between DREAD-S rankings; outlined row: published", top=True)
-# (b) strip: pairwise MAD
+ax.add_patch(plt.Rectangle((-0.5, N - 0.5), N, 1, fill=False, ec=INK, lw=1.0))
+title(ax, 'a', 'Models rank the entries more alike', "Kendall's τ between DREAD-S rankings; outlined row: published", top=True)
+# (b) strip: pairwise MAD in three groups (Claude-Claude, Claude-GPT-6, model vs published)
 ax = fig.add_subplot(gs[0, 1])
-between = [(a, b) for a, b in itertools.combinations(range(5), 2)]
-yb = [mad_m[a, b] for a, b in between]; yp = [mad_m[a, 5] for a in range(5)]
-ax.plot(np.zeros(len(yb)) + np.linspace(-0.12, 0.12, len(yb)), yb, 'o', ms=5.2, color=MUTED, mec=SURF, mew=1.1, zorder=3)
-for a in range(5): ax.plot(1 + (a - 2) * 0.10, yp[a], 'o', ms=5.6, color=CAT[short[a]], mec=SURF, mew=1.2, zorder=3)
-ax.plot([-0.3, 0.3], [np.mean(yb)] * 2, color=INK, lw=1.2, zorder=4); ax.plot([0.7, 1.3], [np.mean(yp)] * 2, color=INK, lw=1.2, zorder=4)
-ax.text(0.34, np.mean(yb), f'{np.mean(yb):.2f}', va='center', fontsize=7, fontweight='semibold'); ax.text(1.34, np.mean(yp), f'{np.mean(yp):.2f}', va='center', fontsize=7, fontweight='semibold')
-ax.set_xlim(-0.6, 1.9); ax.set_ylim(0, 1.8); ax.set_xticks([0, 1]); ax.set_xticklabels(['Between two\nmodels (10 pairs)', 'Model vs published\n(5 models)'], fontsize=7, color=INK2)
+ci = [i for i, s in enumerate(short) if s in CLAUDE]; oi = [i for i in range(N) if i not in ci]
+g1 = [(a, b) for a, b in itertools.combinations(ci, 2)]                      # same provider
+g2 = [(a, b) for a in ci for b in oi]                                       # across providers
+g3 = [(a, N) for a in range(N)]                                             # model vs published
+groups = [g1, g2, g3]; gx = [0, 1, 2]
+for x, g in zip(gx, groups):
+    y = [mad_m[a, b] for a, b in g]
+    if x < 2: ax.plot(np.zeros(len(y)) + x + np.linspace(-0.14, 0.14, len(y)), y, 'o', ms=5.2, color=MUTED, mec=SURF, mew=1.1, zorder=3)
+    else:
+        for k, (a, b) in enumerate(g): ax.plot(x + (k - (len(g) - 1) / 2) * 0.10, y[k], 'o', ms=5.6, color=CAT[short[a]], mec=SURF, mew=1.2, zorder=3)
+    ax.plot([x - 0.3, x + 0.3], [np.mean(y)] * 2, color=INK, lw=1.2, zorder=4)
+    ax.text(x + 0.34, np.mean(y), f'{np.mean(y):.2f}', va='center', fontsize=7, fontweight='semibold')
+ax.set_xlim(-0.6, 2.75); ax.set_ylim(0, 1.9); ax.set_xticks(gx)
+ax.set_xticklabels([f'Claude–Claude\n{len(g1)} pairs', f'Claude–GPT-6\n{len(g2)} pairs', f'Model–published\n{N} models'], fontsize=6.4, color=INK2)
 ax.yaxis.grid(True, color=GRID, lw=0.6, zorder=0); ax.set_axisbelow(True); ax.set_ylabel('Mean absolute deviation, five DREAD\nratings (mean of 3 runs per model)', fontsize=6.6)
-title(ax, 'b', 'Closer to each other than to published', 'Each dot is one pair; coloured: model vs published', top=True)
-for a in range(5): ax.text(1 + (a - 2) * 0.10, yp[a] + 0.09, short[a].split()[1], ha='center', fontsize=5.8, color=INK2)
+title(ax, 'b', 'Same-provider models are closest', 'Each dot is one pair; coloured: model vs published', top=True)
+for k, (a, b) in enumerate(g3): ax.text(2 + (k - (len(g3) - 1) / 2) * 0.10, mad_m[a, b] + 0.09, short[a].split()[1], ha='center', fontsize=5.8, color=INK2)
 dump('fig3a_tau_between', ['rater'] + labs, [[l] + list(np.round(r, 3)) for l, r in zip(labs, tm)])
-dump('fig3b_mad_pairs', ['pair', 'MAD_five_dread'], [[f'{short[a]} vs {short[b]}', round(mad_m[a, b], 3)] for a, b in between] + [[f'{short[a]} vs published', round(mad_m[a, 5], 3)] for a in range(5)])
+dump('fig3b_mad_pairs', ['pair', 'MAD_five_dread'], [[f'{short[a]} vs {short[b]}', round(mad_m[a, b], 3)] for a, b in g1 + g2] + [[f'{short[a]} vs published', round(mad_m[a, N], 3)] for a in range(N)])
 save(fig, 'fig3_models_vs_published')
 print('figures written to', os.path.abspath(OUT))

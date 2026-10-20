@@ -1,5 +1,5 @@
 # LLM-rater study: computed results
-Models: LLM A (Claude Sonnet 5.5), LLM B (Claude Haiku 5.5), LLM C (Claude Opus 4.6), LLM D (Claude Opus 5), LLM E (Claude Opus 5.5)
+Models: LLM A (Claude Sonnet 5.5), LLM B (Claude Haiku 5.5), LLM C (Claude Opus 4.6), LLM D (Claude Opus 5), LLM E (Claude Opus 5.5), LLM F (OpenAI GPT-6)
 Published mean DREAD-S: 3.71
 
 ## LLM A (Claude Sonnet 5.5) (K=3 runs)
@@ -102,7 +102,42 @@ Run-to-run MAD (5 DREAD ratings): 0.48; MAD vs published: five ratings 1.71, S 0
 | run 3 | 0.44 | 12 | 1 | 0.71 | INF-01 | 5 | 0.67 | Critical |
 | median of runs | 0.45 | 12 | 1 | 0.71 | INF-01 | 5 | 0.67 | Critical |
 
-## All 15 runs pooled
+## LLM F (OpenAI GPT-6) (K=3 runs)
+| Dim | alpha | ICC(2,1) | MAD vs published | within +-1 (DREAD-S: same band) |
+|---|---|---|---|---|
+| D | 0.93 | 0.93 | 1.11 | 0.71 |
+| R | 0.82 | 0.82 | 1.56 | 0.49 |
+| E | 0.84 | 0.84 | 1.10 | 0.68 |
+| A | 0.83 | 0.84 | 1.06 | 0.71 |
+| D2 | 0.73 | 0.74 | 1.00 | 0.75 |
+| S | 0.94 | 0.94 | 0.90 | 0.81 |
+| DREAD-S | 0.93 | 0.93 | 0.33 | 0.70 |
+
+Run-to-run MAD (5 DREAD ratings): 0.39; MAD vs published: five ratings 1.17, S 0.90; signed mean (LLM - published) D,R,E,A,D2,S = [0.29, 1.46, -0.94, 0.27, -0.05, 0.52]; mean DREAD-S 3.87
+
+| Rater | tau | bands changed | bands raised | top-7 overlap | first | INF-02 rank | gov in 5 lowest | highest band |
+|---|---|---|---|---|---|---|---|---|
+| run 1 | 0.46 | 6 | 5 | 0.43 | SVC-04 | 10 | 1.00 | Critical |
+| run 2 | 0.47 | 8 | 5 | 0.71 | SVC-03 | 8 | 0.67 | Critical |
+| run 3 | 0.47 | 5 | 3 | 0.57 | SVC-04 | 5 | 0.67 | Critical |
+| median of runs | 0.49 | 8 | 6 | 0.57 | SVC-04 | 5 | 0.67 | Critical |
+
+## All 18 runs pooled
+| Dim | alpha | ICC(2,1) | MAD vs published | within +-1 |
+|---|---|---|---|---|
+| D | 0.74 | 0.75 | 1.15 | 0.67 |
+| R | 0.64 | 0.66 | 1.24 | 0.63 |
+| E | 0.70 | 0.71 | 1.65 | 0.52 |
+| A | 0.72 | 0.73 | 1.46 | 0.61 |
+| D2 | 0.69 | 0.70 | 1.85 | 0.45 |
+| S | 0.83 | 0.84 | 0.71 | 0.92 |
+| DREAD-S | 0.74 | 0.75 | 0.44 | 0.53 |
+
+| Rater | tau | bands changed | bands raised | top-7 overlap | first | INF-02 rank | gov in 5 lowest | highest band |
+|---|---|---|---|---|---|---|---|---|
+| median of all runs | 0.52 | 11 | 1 | 0.71 | INF-01 | 4 | 1.00 | Critical |
+
+## Claude runs only (15 runs pooled)
 | Dim | alpha | ICC(2,1) | MAD vs published | within +-1 |
 |---|---|---|---|---|
 | D | 0.82 | 0.83 | 1.16 | 0.67 |
@@ -115,7 +150,7 @@ Run-to-run MAD (5 DREAD ratings): 0.48; MAD vs published: five ratings 1.71, S 0
 
 | Rater | tau | bands changed | bands raised | top-7 overlap | first | INF-02 rank | gov in 5 lowest | highest band |
 |---|---|---|---|---|---|---|---|---|
-| median of all runs | 0.53 | 11 | 1 | 0.71 | INF-01 | 3 | 1.00 | Critical |
+| median of Claude runs | 0.53 | 11 | 1 | 0.71 | INF-01 | 3 | 1.00 | Critical |
 
 ## Between-model agreement (means of each model's runs)
 
@@ -163,6 +198,17 @@ LLM A (Claude Sonnet 5.5) vs LLM E (Claude Opus 5.5)
 | S | 0.93 | 0.40 |
 | DREAD-S tau | 0.80 | 0.16 |
 
+LLM A (Claude Sonnet 5.5) vs LLM F (OpenAI GPT-6)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.85 | 1.54 |
+| R | 0.61 | 1.60 |
+| E | 0.67 | 1.16 |
+| A | 0.80 | 1.43 |
+| D2 | 0.67 | 1.24 |
+| S | 0.90 | 0.87 |
+| DREAD-S tau | 0.69 | 0.61 |
+
 LLM B (Claude Haiku 5.5) vs LLM C (Claude Opus 4.6)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -196,6 +242,17 @@ LLM B (Claude Haiku 5.5) vs LLM E (Claude Opus 5.5)
 | S | 0.92 | 0.41 |
 | DREAD-S tau | 0.78 | 0.15 |
 
+LLM B (Claude Haiku 5.5) vs LLM F (OpenAI GPT-6)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.85 | 1.37 |
+| R | 0.56 | 1.57 |
+| E | 0.58 | 0.94 |
+| A | 0.92 | 1.22 |
+| D2 | 0.61 | 1.90 |
+| S | 0.94 | 0.92 |
+| DREAD-S tau | 0.65 | 0.61 |
+
 LLM C (Claude Opus 4.6) vs LLM D (Claude Opus 5)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -218,6 +275,17 @@ LLM C (Claude Opus 4.6) vs LLM E (Claude Opus 5.5)
 | S | 0.93 | 0.38 |
 | DREAD-S tau | 0.81 | 0.25 |
 
+LLM C (Claude Opus 4.6) vs LLM F (OpenAI GPT-6)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.91 | 0.83 |
+| R | 0.71 | 1.27 |
+| E | 0.84 | 0.73 |
+| A | 0.87 | 0.81 |
+| D2 | 0.81 | 1.24 |
+| S | 0.95 | 0.29 |
+| DREAD-S tau | 0.76 | 0.37 |
+
 LLM D (Claude Opus 5) vs LLM E (Claude Opus 5.5)
 | Dim | Pearson r | MAD of run means |
 |---|---|---|
@@ -228,3 +296,30 @@ LLM D (Claude Opus 5) vs LLM E (Claude Opus 5.5)
 | D2 | 0.97 | 0.35 |
 | S | 0.96 | 0.25 |
 | DREAD-S tau | 0.85 | 0.11 |
+
+LLM D (Claude Opus 5) vs LLM F (OpenAI GPT-6)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.89 | 1.25 |
+| R | 0.63 | 1.83 |
+| E | 0.69 | 1.21 |
+| A | 0.87 | 1.17 |
+| D2 | 0.72 | 1.79 |
+| S | 0.95 | 0.51 |
+| DREAD-S tau | 0.60 | 0.58 |
+
+LLM E (Claude Opus 5.5) vs LLM F (OpenAI GPT-6)
+| Dim | Pearson r | MAD of run means |
+|---|---|---|
+| D | 0.87 | 1.40 |
+| R | 0.69 | 1.73 |
+| E | 0.74 | 1.21 |
+| A | 0.86 | 1.59 |
+| D2 | 0.66 | 1.76 |
+| S | 0.93 | 0.60 |
+| DREAD-S tau | 0.66 | 0.62 |
+
+## Between-model agreement by provider group (MAD of the five DREAD ratings, run means; Kendall tau of DREAD-S)
+
+Claude vs Claude: 10 pairs; MAD 0.46-0.82 (mean 0.64); tau 0.78-0.85 (mean 0.81)
+Claude vs other provider: 5 pairs; MAD 0.97-1.54 (mean 1.35); tau 0.60-0.76 (mean 0.67)

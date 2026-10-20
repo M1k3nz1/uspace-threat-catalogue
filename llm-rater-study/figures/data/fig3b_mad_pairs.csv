@@ -9,8 +9,14 @@ LLM B vs LLM E,0.721
 LLM C vs LLM D,0.711
 LLM C vs LLM E,0.822
 LLM D vs LLM E,0.46
+LLM A vs LLM F,1.394
+LLM B vs LLM F,1.4
+LLM C vs LLM F,0.975
+LLM D vs LLM F,1.451
+LLM E vs LLM F,1.537
 LLM A vs published,1.562
 LLM B vs published,1.543
 LLM C vs published,1.257
 LLM D vs published,1.53
 LLM E vs published,1.705
+LLM F vs published,1.152

@@ -1,0 +1,212 @@
+[
+{
+"id": "DAT-03",
+"D": 8,
+"R": 7,
+"E": 6,
+"A": 9,
+"D2": 6,
+"S": 5,
+"rationale": "Manipulated weather and traffic feeds can cause widespread flight conflicts and unsafe routing with potentially catastrophic consequences."
+},
+{
+"id": "GOV-03",
+"D": 4,
+"R": 7,
+"E": 5,
+"A": 5,
+"D2": 5,
+"S": 1,
+"rationale": "Strategic information disclosure can expose operational weaknesses and enable future attacks, but does not directly compromise flight safety."
+},
+{
+"id": "DAT-02",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 10,
+"D2": 7,
+"S": 5,
+"rationale": "Poisoning the SSOT can simultaneously corrupt dependent services across the federation, causing systemic failures and potentially catastrophic aviation accidents."
+},
+{
+"id": "INF-05",
+"D": 10,
+"R": 7,
+"E": 6,
+"A": 7,
+"D2": 6,
+"S": 5,
+"rationale": "Manipulated altitude data and inertial measurements can directly destabilize flight control, cause collisions, and produce catastrophic crashes."
+},
+{
+"id": "SVC-02",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Injected positions can conceal genuine traffic conflicts and create phantom aircraft, undermining separation and potentially causing catastrophic collisions."
+},
+{
+"id": "DAT-04",
+"D": 6,
+"R": 8,
+"E": 6,
+"A": 6,
+"D2": 5,
+"S": 2,
+"rationale": "Tampered audit trails obstruct incident investigation and accountability, indirectly increasing safety risk without directly disrupting flight operations."
+},
+{
+"id": "GOV-02",
+"D": 7,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 8,
+"S": 4,
+"rationale": "Exploiting regulatory gaps can permit inadequately secured USSP operations at scale, creating serious systemic safety and oversight deficiencies."
+},
+{
+"id": "SVC-01",
+"D": 7,
+"R": 8,
+"E": 7,
+"A": 6,
+"D2": 7,
+"S": 4,
+"rationale": "Spoofed identities and stolen credentials enable unauthorized operations that undermine operator accountability and can create serious airspace safety risks."
+},
+{
+"id": "SVC-03",
+"D": 10,
+"R": 8,
+"E": 7,
+"A": 9,
+"D2": 8,
+"S": 5,
+"rationale": "Bypassing authorization controls can enable unrestricted unauthorized flights throughout a managed volume, potentially causing catastrophic conflicts and collisions."
+},
+{
+"id": "DAT-01",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Removing no-fly zone boundaries can systematically authorize flights into restricted airspace, potentially causing catastrophic encounters with crewed aircraft or hazardous sites."
+},
+{
+"id": "INF-01",
+"D": 10,
+"R": 8,
+"E": 5,
+"A": 7,
+"D2": 6,
+"S": 5,
+"rationale": "GNSS spoofing or jamming can divert multiple aircraft into hazardous airspace or cause loss of navigation, resulting in potentially catastrophic accidents."
+},
+{
+"id": "INF-06",
+"D": 9,
+"R": 5,
+"E": 5,
+"A": 5,
+"D2": 6,
+"S": 5,
+"rationale": "Sabotage of critical vertiport controls or physical landing areas can endanger aircraft and people during approach, landing, or ground operations."
+},
+{
+"id": "SVC-05",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Compromised geofencing can mislead multiple operators into restricted airspace, creating potentially catastrophic encounters with protected or crewed-aircraft areas."
+},
+{
+"id": "INF-03",
+"D": 10,
+"R": 7,
+"E": 5,
+"A": 8,
+"D2": 6,
+"S": 5,
+"rationale": "Backdoored flight controllers or malicious firmware can compromise flight integrity across deployed aircraft and cause uncontrolled flight or catastrophic crashes."
+},
+{
+"id": "GOV-01",
+"D": 6,
+"R": 7,
+"E": 5,
+"A": 7,
+"D2": 5,
+"S": 3,
+"rationale": "Tampered regulatory audit records can conceal unsafe USSP practices and prevent corrective enforcement, creating moderate indirect safety consequences."
+},
+{
+"id": "INF-07",
+"D": 10,
+"R": 8,
+"E": 5,
+"A": 10,
+"D2": 6,
+"S": 5,
+"rationale": "A compromised trusted supplier can distribute persistent backdoors across an entire fleet, enabling widespread loss of aircraft integrity and catastrophic safety failures."
+},
+{
+"id": "INF-04",
+"D": 10,
+"R": 7,
+"E": 5,
+"A": 8,
+"D2": 6,
+"S": 5,
+"rationale": "Ground infrastructure outages can halt operations, while malicious battery depletion during flight can cause power loss and catastrophic aircraft crashes."
+},
+{
+"id": "SVC-04",
+"D": 9,
+"R": 9,
+"E": 8,
+"A": 10,
+"D2": 8,
+"S": 4,
+"rationale": "Flooding a single API gateway can disrupt authorizations across an entire operational volume, creating serious safety risks through loss of essential services."
+},
+{
+"id": "DAT-06",
+"D": 8,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 8,
+"S": 3,
+"rationale": "SQL injection can expose and corrupt large volumes of flight-plan data, degrading operational integrity and creating moderate safety consequences."
+},
+{
+"id": "INF-02",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 6,
+"S": 5,
+"rationale": "Jamming or compromising command-and-control links can cause loss of aircraft control during BVLOS flight, potentially resulting in catastrophic crashes."
+},
+{
+"id": "DAT-05",
+"D": 6,
+"R": 8,
+"E": 7,
+"A": 8,
+"D2": 8,
+"S": 2,
+"rationale": "Bulk exfiltration of sensitive flight plans compromises operational confidentiality and can facilitate targeted attacks, with indirect and generally minor immediate safety consequences."
+}
+]

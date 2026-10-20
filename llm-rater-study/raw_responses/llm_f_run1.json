@@ -1,0 +1,212 @@
+[
+{
+"id": "INF-02",
+"D": 9,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "RF jamming and unauthenticated C2 interception are repeatable attacks that can cause loss of control and crashes, although execution requires suitable equipment and proximity or signal access."
+},
+{
+"id": "SVC-03",
+"D": 9,
+"R": 8,
+"E": 7,
+"A": 7,
+"D2": 8,
+"S": 4,
+"rationale": "A JWT verification bypass can grant unauthorised flight permissions repeatedly with moderate technical skill, potentially enabling widespread unsafe operations and serious airspace conflicts."
+},
+{
+"id": "INF-07",
+"D": 10,
+"R": 8,
+"E": 4,
+"A": 10,
+"D2": 5,
+"S": 5,
+"rationale": "A trusted-vendor firmware compromise can distribute persistent backdoors across an entire fleet, enabling systemic loss of control, surveillance, or catastrophic flight failures despite the substantial supply-chain effort required."
+},
+{
+"id": "INF-06",
+"D": 9,
+"R": 5,
+"E": 5,
+"A": 6,
+"D2": 6,
+"S": 5,
+"rationale": "Physical sabotage of critical vertiport controls can endanger aircraft and people, but requires site access and generally affects a particular facility rather than the entire U-Space ecosystem."
+},
+{
+"id": "GOV-01",
+"D": 6,
+"R": 7,
+"E": 5,
+"A": 8,
+"D2": 6,
+"S": 2,
+"rationale": "Audit-log manipulation can repeatedly undermine regulatory accountability across multiple USSPs, although its direct safety consequences are indirect and depend on subsequent undetected violations."
+},
+{
+"id": "DAT-06",
+"D": 9,
+"R": 9,
+"E": 7,
+"A": 8,
+"D2": 8,
+"S": 4,
+"rationale": "SQL injection can repeatedly expose and corrupt large volumes of flight-plan data with moderate skill, potentially disrupting coordinated operations and creating serious airspace safety risks."
+},
+{
+"id": "GOV-03",
+"D": 5,
+"R": 6,
+"E": 5,
+"A": 6,
+"D2": 5,
+"S": 1,
+"rationale": "Strategic document theft can expose sensitive deployment plans and defensive weaknesses, but the described disclosure has no direct safety consequence without further exploitation."
+},
+{
+"id": "INF-03",
+"D": 10,
+"R": 8,
+"E": 5,
+"A": 9,
+"D2": 7,
+"S": 5,
+"rationale": "Backdoored flight-controller firmware can compromise control and safety functions across many aircraft through repeated updates, with potentially catastrophic consequences despite the technical and supply-chain access required."
+},
+{
+"id": "SVC-05",
+"D": 9,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Unauthenticated geofence-feed manipulation can repeatedly falsify restricted-airspace boundaries and enable dangerous incursions affecting many dependent aircraft, potentially resulting in catastrophic encounters."
+},
+{
+"id": "SVC-02",
+"D": 9,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Unvalidated telemetry or GNSS replay can create convincing phantom tracks and conceal real conflicts, undermining separation assurance across multiple aircraft with potentially catastrophic safety consequences."
+},
+{
+"id": "DAT-05",
+"D": 6,
+"R": 9,
+"E": 8,
+"A": 7,
+"D2": 9,
+"S": 2,
+"rationale": "A stolen API key and absent rate limits make bulk flight-plan exfiltration easy to repeat, exposing substantial sensitive data but causing only indirect safety consequences in the stated scenario."
+},
+{
+"id": "DAT-02",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 10,
+"D2": 7,
+"S": 5,
+"rationale": "Poisoning a shared single source of truth can systematically corrupt information consumed by all dependent services, producing fleet-wide coordination failures and potentially catastrophic airspace conflicts."
+},
+{
+"id": "SVC-01",
+"D": 8,
+"R": 8,
+"E": 7,
+"A": 7,
+"D2": 8,
+"S": 4,
+"rationale": "Weak identity proofing and stolen credentials enable repeatable impersonation and unauthorised flight approvals, potentially facilitating serious violations and unsafe operations across multiple operators."
+},
+{
+"id": "DAT-01",
+"D": 10,
+"R": 8,
+"E": 7,
+"A": 9,
+"D2": 8,
+"S": 5,
+"rationale": "Removing no-fly-zone boundaries through an unsecured API can repeatedly invalidate critical airspace protections for many aircraft and permit incursions with potentially catastrophic consequences."
+},
+{
+"id": "DAT-03",
+"D": 9,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Manipulated weather and traffic feeds can repeatedly induce unsafe routing and simultaneous traffic conflicts across multiple aircraft, with potentially catastrophic consequences depending on flight conditions."
+},
+{
+"id": "GOV-02",
+"D": 7,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 3,
+"rationale": "Regulatory ambiguity can be exploited repeatedly to bypass cybersecurity obligations across multiple providers, weakening systemic resilience while producing moderate and indirect safety consequences."
+},
+{
+"id": "INF-01",
+"D": 10,
+"R": 8,
+"E": 5,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "GNSS spoofing or jamming can cause navigation loss and restricted-airspace deviations across multiple aircraft, potentially producing catastrophic outcomes although effective RF attacks require specialised equipment and conditions."
+},
+{
+"id": "DAT-04",
+"D": 7,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 2,
+"rationale": "Tampering with audit trails can repeatedly conceal incidents and obstruct investigations across multiple systems, substantially weakening accountability but not directly causing a safety event in the stated scenario."
+},
+{
+"id": "INF-04",
+"D": 10,
+"R": 7,
+"E": 5,
+"A": 8,
+"D2": 6,
+"S": 5,
+"rationale": "Ground-station outages can halt essential operations, while malicious battery-management manipulation can deplete power during flight and cause crashes, creating potentially catastrophic safety consequences."
+},
+{
+"id": "SVC-04",
+"D": 9,
+"R": 9,
+"E": 8,
+"A": 10,
+"D2": 9,
+"S": 4,
+"rationale": "Flooding an unprotected central API gateway is relatively easy and repeatable, potentially disabling authorisations and multiple services across an entire airspace volume and creating serious operational safety risks."
+},
+{
+"id": "INF-05",
+"D": 9,
+"R": 7,
+"E": 6,
+"A": 7,
+"D2": 7,
+"S": 5,
+"rationale": "Sensor spoofing and IMU manipulation can corrupt altitude and attitude estimates, trigger unsafe flight decisions, and cause crashes, although effective attacks depend on access to relevant signals or hardware."
+}
+]

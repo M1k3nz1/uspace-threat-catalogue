@@ -1,0 +1,212 @@
+[
+{
+"id": "SVC-03",
+"D": 9,
+"R": 7,
+"E": 6,
+"A": 8,
+"D2": 6,
+"S": 5,
+"rationale": "Forged flight authorisations can enable unauthorised operations across the airspace, creating catastrophic collision or restricted-airspace incursion risks."
+},
+{
+"id": "INF-01",
+"D": 10,
+"R": 8,
+"E": 5,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "GNSS spoofing or jamming can compromise navigation across multiple aircraft and cause catastrophic airspace incursions or loss-of-control accidents."
+},
+{
+"id": "DAT-06",
+"D": 8,
+"R": 9,
+"E": 7,
+"A": 9,
+"D2": 8,
+"S": 3,
+"rationale": "Repeatable SQL injection can expose and corrupt mass flight-plan records, undermining operational integrity and potentially contributing to unsafe traffic management."
+},
+{
+"id": "DAT-03",
+"D": 9,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Manipulated weather and traffic feeds can induce unsafe routing and undetected aircraft conflicts with potentially catastrophic collision consequences."
+},
+{
+"id": "SVC-01",
+"D": 7,
+"R": 8,
+"E": 7,
+"A": 6,
+"D2": 7,
+"S": 3,
+"rationale": "Identity fraud can enable illegal flight authorisations and weaken operator accountability, although its direct safety impact depends on subsequent flight activity."
+},
+{
+"id": "INF-02",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "C2 disruption or manipulation can cause loss of control and crashes during BVLOS operations, while affecting multiple aircraft and communications links."
+},
+{
+"id": "DAT-04",
+"D": 6,
+"R": 8,
+"E": 6,
+"A": 7,
+"D2": 6,
+"S": 2,
+"rationale": "Audit-trail destruction impairs incident investigation and accountability, indirectly increasing safety risk by preventing effective detection and remediation."
+},
+{
+"id": "GOV-01",
+"D": 6,
+"R": 7,
+"E": 6,
+"A": 7,
+"D2": 5,
+"S": 2,
+"rationale": "Regulatory audit manipulation can conceal systemic violations and weaken oversight, with safety consequences emerging indirectly through continued noncompliance."
+},
+{
+"id": "INF-03",
+"D": 10,
+"R": 7,
+"E": 5,
+"A": 8,
+"D2": 6,
+"S": 5,
+"rationale": "Malicious flight-controller firmware can compromise aircraft control and propagate through production or update channels, potentially causing catastrophic accidents."
+},
+{
+"id": "SVC-02",
+"D": 9,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Fabricated telemetry can conceal real aircraft positions and conflicts from monitoring services, undermining separation and potentially causing catastrophic collisions."
+},
+{
+"id": "INF-07",
+"D": 10,
+"R": 8,
+"E": 5,
+"A": 10,
+"D2": 5,
+"S": 5,
+"rationale": "Compromised trusted suppliers can distribute persistent malicious firmware across an entire fleet, enabling widespread control compromise and catastrophic safety failures."
+},
+{
+"id": "DAT-02",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 10,
+"D2": 7,
+"S": 5,
+"rationale": "Poisoning the single source of truth can simultaneously corrupt dependent services, producing widespread unsafe decisions and potentially catastrophic airspace conflicts."
+},
+{
+"id": "INF-06",
+"D": 8,
+"R": 6,
+"E": 5,
+"A": 5,
+"D2": 6,
+"S": 4,
+"rationale": "Sabotage of critical vertiport controls can disable landing operations and endanger aircraft and personnel, with severity depending on facility redundancy and occupancy."
+},
+{
+"id": "INF-05",
+"D": 9,
+"R": 7,
+"E": 5,
+"A": 6,
+"D2": 6,
+"S": 5,
+"rationale": "Manipulated altitude or inertial measurements can corrupt flight-control decisions and cause loss of separation or aircraft crashes."
+},
+{
+"id": "INF-04",
+"D": 9,
+"R": 7,
+"E": 5,
+"A": 7,
+"D2": 6,
+"S": 5,
+"rationale": "Ground-station power loss can halt operations, while malicious BMS manipulation can deplete airborne batteries and cause uncontrolled descent or crashes."
+},
+{
+"id": "DAT-05",
+"D": 6,
+"R": 9,
+"E": 7,
+"A": 8,
+"D2": 8,
+"S": 2,
+"rationale": "Stolen API credentials and unrestricted queries facilitate repeatable bulk disclosure of sensitive flight plans, with safety consequences primarily arising from subsequent misuse."
+},
+{
+"id": "DAT-01",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Removing or altering no-fly-zone records can mislead multiple operators into restricted airspace, potentially causing severe conflicts with crewed aircraft or sensitive facilities."
+},
+{
+"id": "GOV-03",
+"D": 5,
+"R": 7,
+"E": 5,
+"A": 6,
+"D2": 5,
+"S": 1,
+"rationale": "Strategic-document exfiltration exposes deployment plans and risk assessments that can aid adversaries, but the described disclosure has no direct safety consequence."
+},
+{
+"id": "SVC-04",
+"D": 9,
+"R": 10,
+"E": 8,
+"A": 10,
+"D2": 9,
+"S": 4,
+"rationale": "Flooding a single point of failure can make flight authorisations unavailable across an entire volume, disrupting safe operations and potentially stranding airborne aircraft."
+},
+{
+"id": "SVC-05",
+"D": 10,
+"R": 8,
+"E": 6,
+"A": 8,
+"D2": 7,
+"S": 5,
+"rationale": "Forged geofence boundaries can systematically mislead operators into restricted airspace, creating potentially catastrophic conflicts with crewed aircraft or other protected operations."
+},
+{
+"id": "GOV-02",
+"D": 7,
+"R": 9,
+"E": 7,
+"A": 8,
+"D2": 8,
+"S": 3,
+"rationale": "Exploiting regulatory ambiguity can enable providers to operate without adequate cybersecurity controls, increasing systemic exposure while producing indirect and context-dependent safety consequences."
+}
+]
