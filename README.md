@@ -1,11 +1,19 @@
 # U-Space Threat Catalogue: data and analysis code
 
-Open supporting material for a paper on a layered threat model for U-Space
-(currently under review; details withheld for double-anonymous review).
+Open supporting material for the paper "A Layered Threat Model for U-Space:
+Architecture, Assets, and Cross-Layer Attack Propagation in Unmanned Traffic
+Management", submitted to IEEE Transactions on Dependable and Secure Computing
+(TDSC).
 
 The repository contains the threat-catalogue ratings, the cross-layer propagation
-graph, the complete threat model with its figures, and a script that recomputes every
-quantitative result reported in the paper.
+graph, and a script that recomputes every quantitative result reported in the paper.
+
+## Author and contact
+
+Moiz Abdullah, Centre for Informatics and Systems of the University of Coimbra
+(CISUC), Department of Informatics Engineering, University of Coimbra,
+3030-290 Coimbra, Portugal.
+Contact: moizabdullahshah@gmail.com
 
 ## Contents
 
@@ -15,8 +23,6 @@ quantitative result reported in the paper.
 | `edges.csv` | The 45 propagation edges: source, target, mechanism (Integrity / trust, Availability, Oversight), basis, resolution rule |
 | `uspace_scoring_and_propagation.xlsx` | Workbook with three sheets: scoring (live Eq. 1 formula and severity bands), propagation edges, blast radius per asset |
 | `reproduce.py` | Recomputes scores, bands, graph structure, chains, cuts, adjusted severity and the sensitivity analysis, and checks 14 values reported in the paper |
-| `threat-model/` | The complete layered threat model: per-asset data for all 21 assets (`threat_model_all_assets.csv`), the complete one-page figure, the architecture figure, the INF-01 worked example, and the scripts that regenerate the figures. See its own README |
-| `llm-rater-study/` | Prompts, raw responses, extracted ratings, analysis scripts and tables of the LLM-rater study |
 | `LICENSE` | MIT license for the code |
 
 ## Quick start
@@ -75,12 +81,11 @@ exploit code and reports no vulnerability in a specific product.
 
 ## Versions
 
-`v1.0.1` corresponds to the version of the paper submitted for review. It adds the
-`threat-model/` folder to `v1.0.0`; the ratings, edges and analysis script are unchanged.
-Later changes are recorded as new versions.
+`v1.0.2` is the release cited in the manuscript submitted for review. Later changes
+are recorded as new versions.
 
 ## License
 
-Code: MIT (see `LICENSE`). Data files (`ratings.csv`, `edges.csv`, the workbook,
-`threat-model/`): Creative Commons Attribution 4.0 International (CC BY 4.0),
+Code: MIT (see `LICENSE`). Data files (`ratings.csv`, `edges.csv`, the workbook):
+Creative Commons Attribution 4.0 International (CC BY 4.0),
 https://creativecommons.org/licenses/by/4.0/
