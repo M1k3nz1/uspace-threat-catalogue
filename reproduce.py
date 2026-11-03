@@ -88,7 +88,7 @@ named.add_edges_from(e for e, b_ in rule.items() if b_ != "Mapped by rule")
 ck("edges without rule resolution", named.number_of_edges(), 12)
 ck("core exists without rules", len(max(nx.strongly_connected_components(named), key=len)) > 1, False)
 
-print("== Sensitivity (Section 8.4; 20,000 draws, fixed seeds) ==")
+print("== Sensitivity (Section 7.3; 20,000 draws, fixed seeds) ==")
 N = 20000; bb = band_idx(base); top7 = set(np.argsort(-base)[:7]); gov = {0, 1, 2}
 for name, noise_s, seed in (("ratings +-1", False, 11), ("ratings +-1, S +-1", True, 11)):
     rng = np.random.default_rng(seed); tau = []; bc = []; ov = []; first = 0; gb = []
