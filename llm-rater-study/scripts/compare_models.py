@@ -1,4 +1,4 @@
-"""Comparison of the LLM raters on the main factors (Table 'Comparison of the seven LLM raters' of Section 8.5).
+"""Comparison of the LLM raters on the main factors (Table 'Comparison of the seven LLM raters' of Section 7.4).
 Reads results/summary.md (written by analyze.py) and writes results/model_comparison.csv and .md."""
 import re, csv, os
 here = os.path.dirname(os.path.abspath(__file__)); res = os.path.join(here, '..', 'results')
