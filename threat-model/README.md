@@ -6,7 +6,6 @@ The complete layered threat model of the paper: all 21 assets of the U-Space eco
 
 | File | What it is |
 |---|---|
-| `Threat_Model.png` | The complete layered threat model: four layers, 21 assets, each annotated with its primary risk, STRIDE categories and PASTA focus. Directed arrows show the dependencies along which a compromise propagates upward. |
 | `threat_model_all_assets.csv` | The same model as data: one row per asset with STRIDE assignment, PASTA stage and scenario, attack types and vectors, vulnerabilities, affected parts, raw ratings, DREAD-S score and band, evidence confidence, cross-layer propagation and regulatory references. |
 | `figures/fig_architecture.pdf` (`.png`) | Layered architecture of the paper (21 assets, DREAD-S score and severity band per asset). |
 | `figures/fig_threat_model_complete.pdf` (`.png`) | The complete threat model on one page, as a clean vector figure: all 21 assets in four layers, each with its DREAD-S score and band, STRIDE categories, a representative attack type and the PASTA stage. Generated from `threat_model_all_assets.csv`. |
@@ -28,7 +27,7 @@ Worked example (INF-01): ratings D 9, R 7, E 7, A 8, D2 6 give a sum of `nu` of 
 | Column | Meaning |
 |---|---|
 | `id`, `layer`, `asset` | Identifier (GOV-, SVC-, DAT-, INF-), layer and asset name |
-| `stride` | STRIDE categories assigned to the asset (S, T, R, ID, D, EoP) |
+| `stride` | STRIDE categories assigned to the asset (S, T, Rep, ID, DoS, EoP) |
 | `pasta_stage_focus` | PASTA stages at which the entry was principally refined |
 | `attack_types`, `attack_vectors`, `vulnerabilities`, `threat_scenario`, `affected_parts`, `potential_damage` | The PASTA refinement, written at the level of the asset class, not of a product |
 | `D`, `R`, `E`, `A`, `D2`, `S` | Raw ratings and Safety Impact (identical to `../ratings.csv`) |
