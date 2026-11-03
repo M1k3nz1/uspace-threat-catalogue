@@ -46,7 +46,7 @@ o.append(r"\fill[black!10] (%.2f,%.2f) rectangle (%.2f,%.2f);"%(x4+0.54,y-0.1,x4
 o.append(r"\fill[orange!80!black] (%.2f,%.2f) rectangle (%.2f,%.2f);"%(x4+0.54,y-0.1,x4+0.54+1.7*4/5,y+0.1))
 o.append(r"\node[anchor=west,font=\fontsize{6.2}{7}\selectfont] at (%.2f,%.2f) {4 (of 5)};"%(x4+2.3,y))
 o.append(r'\node[anchor=north west,font=\fontsize{5.9}{6.4}\selectfont,text=black!70] at (%.2f,-0.58) {rating $x\to\nu(x)=1+4(x-1)/9$};'%(x4+0.12))
-body(3,-3.5,r"$S{=}4$: SAIL IV--V, ARA B--C (loss of separation)\\[3pt]\centering$\displaystyle\frac{\sum\nu+S}{6}=\frac{19.22+4}{6}=\mathbf{3.87}$",w=PW-0.24)
+body(3,-3.5,r"$S{=}4$: serious, SAIL IV--V (loss of separation)\\[3pt]\centering$\displaystyle\frac{\sum\nu+S}{6}=\frac{19.22+4}{6}=\mathbf{3.87}$",w=PW-0.24)
 # Panel 5
 x5=4*(PW+G)
 o.append(r"\node[draw=black!50,fill=orange!42,rounded corners=2pt,minimum width=%.2fcm,minimum height=0.95cm,align=center,font=\fontsize{6.6}{7.4}\selectfont,inner sep=2pt] at (%.2f,-1.18) {{\fontsize{10}{11}\selectfont\bfseries 3.87}\\DREAD-S, band H (High, 3.4--4.2)};"%(PW-0.24,x5+PW/2))
