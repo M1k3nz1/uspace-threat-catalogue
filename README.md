@@ -84,8 +84,9 @@ exploit code and reports no vulnerability in a specific product.
 
 ## Versions
 
-`v1.0.2` is the release cited in the manuscript submitted for review. Later changes
-are recorded as new versions.
+`v1.0.3` is the release cited in the manuscript submitted for review. It supersedes
+`v1.0.2`, with documentation and figure-label corrections only; the data, the scripts'
+results and all reported numbers are unchanged. Later changes are recorded as new versions.
 
 ## License
 
