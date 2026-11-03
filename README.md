@@ -6,7 +6,8 @@ Management", submitted to IEEE Transactions on Dependable and Secure Computing
 (TDSC).
 
 The repository contains the threat-catalogue ratings, the cross-layer propagation
-graph, and a script that recomputes every quantitative result reported in the paper.
+graph, the complete threat model with its figures, the LLM-rater study, and a script
+that recomputes every quantitative result reported in the paper.
 
 ## Author and contact
 
@@ -23,6 +24,8 @@ Contact: moizabdullahshah@gmail.com
 | `edges.csv` | The 45 propagation edges: source, target, mechanism (Integrity / trust, Availability, Oversight), basis, resolution rule |
 | `uspace_scoring_and_propagation.xlsx` | Workbook with three sheets: scoring (live Eq. 1 formula and severity bands), propagation edges, blast radius per asset |
 | `reproduce.py` | Recomputes scores, bands, graph structure, chains, cuts, adjusted severity and the sensitivity analysis, and checks 14 values reported in the paper |
+| `threat-model/` | The complete layered threat model: per-asset data for all 21 assets (`threat_model_all_assets.csv`), the complete one-page figure, the architecture figure, the INF-01 worked example, and the scripts that regenerate the figures. See its own README |
+| `llm-rater-study/` | Prompts, raw responses, extracted ratings, analysis scripts and tables of the LLM-rater study |
 | `LICENSE` | MIT license for the code |
 
 ## Quick start
@@ -86,6 +89,6 @@ are recorded as new versions.
 
 ## License
 
-Code: MIT (see `LICENSE`). Data files (`ratings.csv`, `edges.csv`, the workbook):
+Code: MIT (see `LICENSE`). Data files (`ratings.csv`, `edges.csv`, the workbook, `threat-model/`, `llm-rater-study/`):
 Creative Commons Attribution 4.0 International (CC BY 4.0),
 https://creativecommons.org/licenses/by/4.0/
