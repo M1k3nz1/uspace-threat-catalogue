@@ -126,7 +126,7 @@ if len(models) > 1:
 open(os.path.join(HERE, '../results/summary.md'), 'w').write(''.join(md))
 print(''.join(md))
 
-# ---- the three LLM tables of Section 8.5 of the paper ----------------------------------------------------------
+# ---- the three LLM tables of Section 7.4 of the paper ----------------------------------------------------------
 def rng(vals, f):
     lo, hi = min(vals), max(vals); return f(lo) if f(lo) == f(hi) else f(lo) + '--' + f(hi)
 ordn = lambda n: {1: '1st', 2: '2nd', 3: '3rd'}.get(n, f'{n}th')
@@ -134,7 +134,7 @@ P = np.concatenate([runs[m] for m in models]); sets = [(m.split(' (')[0], runs[m
 _cl = [m for m in models if 'Claude' in m]; PC = np.concatenate([runs[m] for m in _cl]) if _cl else P
 _two = 0 < len(_cl) < len(models)
 pools = ([('Claude', PC)] if _two else []) + [('All', P)]
-tb = ['# Tables of Section 8.5 (computed)\n', '\n## Table: alpha per dimension (columns: ' + ', '.join(n for n, _ in sets) + ', ' + ', '.join(n for n, _ in pools) + ')\n',
+tb = ['# Tables of Section 7.4 (computed)\n', '\n## Table: alpha per dimension (columns: ' + ', '.join(n for n, _ in sets) + ', ' + ', '.join(n for n, _ in pools) + ')\n',
       '| Dimension | ' + ' | '.join(n.split()[-1] for n, _ in sets) + ' | ' + ' | '.join(n for n, _ in pools) + ' |\n|' + '---|' * (len(sets) + len(pools) + 1) + '\n']
 for j, nm in enumerate(DIMS + ['DREAD-S']):
     cells = []
