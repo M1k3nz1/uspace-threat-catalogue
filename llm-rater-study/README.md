@@ -1,6 +1,6 @@
 # LLM-rater study for the U-Space Threat Catalogue
 
-This folder contains everything needed to reproduce the reliability study reported in Section 8.5 of the paper
+This folder contains everything needed to reproduce the reliability study reported in Section 7.4 of the paper
 ("Reliability with LLM Raters"): the prompts, the ratings of every run, the published ratings used as the baseline,
 the analysis script, and the computed results. It is organised to be copied into the GitHub repository as it is.
 
@@ -51,7 +51,7 @@ ratings/ratings_all_runs.csv all ratings in long format (id, model, run, D, R, E
 scripts/analyze.py           computes all statistics (numpy, scipy)
 scripts/add_run.py           validates a JSON response and appends it to the ratings CSV
 results/                     computed tables (summary.md and CSV files)
-results/paper_tables.md      the numbers of the three LLM tables of Section 8.5
+results/paper_tables.md      the numbers of the three LLM tables of Section 7.4
 figures/                     three figures (PDF for LaTeX, PNG 300 dpi) and figures/data/*.csv (the numbers behind each panel)
 scripts/make_figures.py      regenerates the figures (numpy, scipy, matplotlib)
 scripts/compare_models.py    side-by-side comparison of the models (results/model_comparison.csv/.md)
