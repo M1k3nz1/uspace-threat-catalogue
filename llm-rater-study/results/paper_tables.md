@@ -1,4 +1,4 @@
-# Tables of Section 8.5 (computed)
+# Tables of Section 7.4 (computed)
 
 ## Table: alpha per dimension (columns: LLM A, LLM B, LLM C, LLM D, LLM E, LLM F, LLM G, Claude, All)
 | Dimension | A | B | C | D | E | F | G | Claude | All |
